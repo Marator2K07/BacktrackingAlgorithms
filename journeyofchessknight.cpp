@@ -52,14 +52,19 @@ void JourneyOfChessKnight::first(Chessboard *chessboard)
 
 void JourneyOfChessKnight::tryNextMove(Chessboard *chessboard)
 {
-    /*
+    // пытаемся сделать ход пока есть место на доске
     if (i < chessboard->getSize()*
             chessboard->getSize()) {
+        // в приоритете всегда первый вариант хода коня
         first(chessboard);
-
+        i++;
+        while (!eos && !canBeDone(chessboard)) {
+            next(chessboard);
+        }
+        isDone = !eos;
     } else {
+        isDone = true;
     }
-    */
 }
 
 void JourneyOfChessKnight::clear(Chessboard *chessboard)
