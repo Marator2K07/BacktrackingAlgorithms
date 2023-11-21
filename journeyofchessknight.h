@@ -20,6 +20,17 @@ private:
     short *movesY; // вспомогательный массив ходов коня по оси Y
     bool eos; // условие, что ходов больше нет
 
+    short beginX; // координата начала путешествия коня
+    short beginY; // координата начала путешествия коня
+    bool isDone; // могут ли быть осуществлены последующие ход/хода
+
+    ///
+    /// \brief next
+    /// выбор следующего допустимого хода
+    void next(int *nextX,
+              int *nextY,
+              int *k);
+
 };
 
 #endif // JOURNEYOFCHESSKNIGHT_H
