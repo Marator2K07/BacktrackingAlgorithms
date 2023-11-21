@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "chessboard.h"
+
 ///
 /// \brief The JourneyOfChessKnight class
 /// Класс демонстрации одноименной задачи.
@@ -12,7 +14,9 @@ class JourneyOfChessKnight : public QObject
 {
     Q_OBJECT
 public:
-    explicit JourneyOfChessKnight(QObject *parent = nullptr);
+    explicit JourneyOfChessKnight(int beginX,
+                                  int beginY,
+                                  QObject *parent = nullptr);
 
 private:
     const short movesSize = 8;
@@ -27,9 +31,10 @@ private:
     ///
     /// \brief next
     /// выбор следующего допустимого хода
-    void next(int *nextX,
+    void next(Chessboard *chessboard,
+              int *nextX,
               int *nextY,
-              int *k);
+              int k);
 
 };
 
