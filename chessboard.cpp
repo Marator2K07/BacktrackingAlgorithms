@@ -54,3 +54,21 @@ void Chessboard::setIsFilled(bool newIsFilled)
 {
     isFilled = newIsFilled;
 }
+
+void Chessboard::print()
+{
+    QTextStream out(stdout);
+
+    for (int i = 0; i < size; i++)
+    {
+        out << '|';
+        for (int k = 0; k < size; k++)
+        {
+            if (QString::number(cells[i][k]).length() <= 1) {
+                out << ' ';
+            }
+            out << cells[i][k] << '|';
+        }
+        out << Qt::endl;
+    }
+}

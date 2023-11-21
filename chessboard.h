@@ -2,6 +2,8 @@
 #define CHESSBOARD_H
 
 #include <QObject>
+#include <QDebug>
+#include <QTextStream>
 
 ///
 /// \brief The Chessboard class
@@ -19,6 +21,13 @@ public:
     int **getCells();
     bool getIsFilled() const;
     void setIsFilled(bool newIsFilled);
+
+public:
+    ///
+    /// \brief print
+    /// метод печати текущего состояния доски
+    /// (значений ее ячеек) в консоли
+    void print();
 
 private:
     short size;
