@@ -14,7 +14,11 @@ class JourneyOfChessKnight : public QObject
 public:
     explicit JourneyOfChessKnight(QObject *parent = nullptr);
 
-signals:
+private:
+    const short movesSize = 8;
+    short *movesX; // вспомогательный массив ходов коня по оси Х
+    short *movesY; // вспомогательный массив ходов коня по оси Y
+    bool eos; // условие, что ходов больше нет
 
 };
 
