@@ -24,23 +24,28 @@ private:
     short *movesY; // вспомогательный массив ходов коня по оси Y
     bool eos; // условие, что ходов больше нет
 
-    short beginX; // координата начала путешествия коня
-    short beginY; // координата начала путешествия коня
+    short beginX; // начальная координата путешествия
+    short beginY; // начальная координата путешествия
+    short nextX; // следующая координата путешествия коня
+    short nextY; // следующая координата путешествия коня
+
     bool isDone; // могут ли быть осуществлены последующие ход/хода
     short k; // вспомогательный индекс хода
+    short i; // индекс текущего хода
 
     ///
     /// \brief next
     /// выбор следующего допустимого хода
-    void next(Chessboard *chessboard,
-              short *nextX,
-              short *nextY);
+    void next(Chessboard *chessboard);
     ///
     /// \brief first
     /// порождение первого допустимого хода
-    void first(Chessboard *chessboard,
-               short *nextX,
-               short *nextY);
+    void first(Chessboard *chessboard);
+    ///
+    /// \brief tryNextMove
+    /// метод говорит сам за себя - попытка сделать
+    /// следующий ход, успешный он или нет, узнается в процессе
+    void tryNextMove(Chessboard *chessboard);
 
 public:
     ///
