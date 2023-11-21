@@ -14,3 +14,38 @@ Chessboard::Chessboard(short size, QObject *parent)
     currentCellY = 0;
     isFilled = false;
 }
+
+short Chessboard::getCurrentCellX() const
+{
+    return currentCellX;
+}
+
+void Chessboard::setCurrentCellX(short newXIndex)
+{
+    currentCellX = newXIndex;
+}
+
+short Chessboard::getCurrentCellY() const
+{
+    return currentCellY;
+}
+
+void Chessboard::setCurrentCellY(short newYIndex)
+{
+    currentCellY = newYIndex;
+}
+
+int **Chessboard::getCells()
+{
+    return cells;
+}
+
+bool Chessboard::getIsFilled() const
+{
+    return isFilled;
+}
+
+void Chessboard::setIsFilled(bool newIsFilled)
+{
+    isFilled = newIsFilled;
+}
