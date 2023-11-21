@@ -13,6 +13,18 @@ JourneyOfChessKnight::JourneyOfChessKnight(int beginX,
     this->beginY = beginY;
 }
 
+bool JourneyOfChessKnight::canBeDone(Chessboard *chessboard)
+{
+    // сначала мы сразу заполняем ячейку номером сделанного
+    // хода, и в случае неудачи, можем даже "откатить операцию"
+    chessboard->getCells()[nextX][nextY] = i;
+    tryNextMove(chessboard);
+    if (!isDone) {
+        chessboard->getCells()[nextX][nextY] = 0;
+    }
+    return isDone;
+}
+
 void JourneyOfChessKnight::next(Chessboard *chessboard)
 {
     // пока координаты следующего хода находятся в пределах
@@ -40,7 +52,14 @@ void JourneyOfChessKnight::first(Chessboard *chessboard)
 
 void JourneyOfChessKnight::tryNextMove(Chessboard *chessboard)
 {
+    /*
+    if (i < chessboard->getSize()*
+            chessboard->getSize()) {
+        first(chessboard);
 
+    } else {
+    }
+    */
 }
 
 void JourneyOfChessKnight::clear(Chessboard *chessboard)

@@ -34,6 +34,11 @@ private:
     short i; // индекс текущего хода
 
     ///
+    /// \brief canBeDone
+    /// данным методом мы проверяем, возможна
+    /// ли запись в следующую ячейку порядкового номера хода
+    bool canBeDone(Chessboard *chessboard);
+    ///
     /// \brief next
     /// выбор следующего допустимого хода
     void next(Chessboard *chessboard);
