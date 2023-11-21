@@ -13,15 +13,8 @@ class Chessboard : public QObject
     Q_OBJECT
 public:
     explicit Chessboard(short size, QObject *parent = nullptr);
-
     short getSize() const;
-    short getCurrentCellX() const;
-    void setCurrentCellX(short newXIndex);
-    short getCurrentCellY() const;
-    void setCurrentCellY(short newYIndex);
     int **getCells();
-    bool getIsFilled() const;
-    void setIsFilled(bool newIsFilled);
 
 public:
     ///
