@@ -42,6 +42,12 @@ private:
                short *nextX,
                short *nextY);
 
+public:
+    ///
+    /// \brief clear
+    /// чистка ходов для определенной доски
+    void clear(Chessboard *chessboard);
+
 };
 
 #endif // JOURNEYOFCHESSKNIGHT_H

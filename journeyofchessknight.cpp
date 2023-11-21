@@ -41,3 +41,8 @@ void JourneyOfChessKnight::first(Chessboard *chessboard,
     k = -1; // таким образом косвенно выбираем ход
     next(chessboard, nextX, nextY);
 }
+
+void JourneyOfChessKnight::clear(Chessboard *chessboard)
+{
+    chessboard->clear();
+}

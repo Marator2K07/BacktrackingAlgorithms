@@ -39,6 +39,17 @@ void Chessboard::print()
     }
 }
 
+void Chessboard::clear()
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int k = 0; k < size; k++)
+        {
+            cells[i][k] = 0;
+        }
+    }
+}
+
 short Chessboard::getSize() const
 {
     return size;
