@@ -8,6 +8,11 @@ Chessboard::Chessboard(short size, QObject *parent)
     for (int i = 0; i < size; i++)
     {
         cells[i] = new int[size];
+        // сразу инициализируем данный массив нулями
+        for (int k = 0; k < size; k++)
+        {
+            cells[i][k] = 0;
+        }
     }
 
     currentCellX = 0;
