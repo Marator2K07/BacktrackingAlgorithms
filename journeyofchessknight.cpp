@@ -14,9 +14,8 @@ JourneyOfChessKnight::JourneyOfChessKnight(int beginX,
 }
 
 void JourneyOfChessKnight::next(Chessboard *chessboard,
-                                int *nextX,
-                                int *nextY,
-                                int k)
+                                short *nextX,
+                                short *nextY)
 {
     // пока координаты следующего хода находятся в пределах
     // доски и сами варианты ходов не перебраны - все впорядке
@@ -32,4 +31,13 @@ void JourneyOfChessKnight::next(Chessboard *chessboard,
                         (*nextY < chessboard->getSize()) &&
                         chessboard->getCells()[*nextX][*nextY] == 0));
     eos = (k == 8);
+}
+
+void JourneyOfChessKnight::first(Chessboard *chessboard,
+                                 short *nextX,
+                                 short *nextY)
+{
+    eos = false;
+    k = -1; // таким образом косвенно выбираем ход
+    next(chessboard, nextX, nextY);
 }

@@ -27,14 +27,20 @@ private:
     short beginX; // координата начала путешествия коня
     short beginY; // координата начала путешествия коня
     bool isDone; // могут ли быть осуществлены последующие ход/хода
+    short k; // вспомогательный индекс хода
 
     ///
     /// \brief next
     /// выбор следующего допустимого хода
     void next(Chessboard *chessboard,
-              int *nextX,
-              int *nextY,
-              int k);
+              short *nextX,
+              short *nextY);
+    ///
+    /// \brief first
+    /// порождение первого допустимого хода
+    void first(Chessboard *chessboard,
+               short *nextX,
+               short *nextY);
 
 };
 
