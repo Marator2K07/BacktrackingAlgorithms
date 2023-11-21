@@ -14,9 +14,7 @@ class JourneyOfChessKnight : public QObject
 {
     Q_OBJECT
 public:
-    explicit JourneyOfChessKnight(int beginX,
-                                  int beginY,
-                                  QObject *parent = nullptr);
+    explicit JourneyOfChessKnight(QObject *parent = nullptr);
 
 private:
     const short movesSize = 8;
@@ -24,8 +22,6 @@ private:
     short *movesY; // вспомогательный массив ходов коня по оси Y
     bool eos; // условие, что ходов больше нет
 
-    short beginX; // начальная координата путешествия
-    short beginY; // начальная координата путешествия
     short nextX; // следующая координата путешествия коня
     short nextY; // следующая координата путешествия коня
 
@@ -37,20 +33,28 @@ private:
     /// \brief canBeDone
     /// данным методом мы проверяем, возможна
     /// ли запись в следующую ячейку порядкового номера хода
-    bool canBeDone(Chessboard *chessboard);
+    bool canBeDone(Chessboard *chessboard,
+                   short currentX,
+                   short currentY);
     ///
     /// \brief next
     /// выбор следующего допустимого хода
-    void next(Chessboard *chessboard);
+    void next(Chessboard *chessboard,
+              short currentX,
+              short currentY);
     ///
     /// \brief first
     /// порождение первого допустимого хода
-    void first(Chessboard *chessboard);
+    void first(Chessboard *chessboard,
+               short currentX,
+               short currentY);
     ///
     /// \brief tryNextMove
     /// метод говорит сам за себя - попытка сделать
     /// следующий ход, успешный он или нет, узнается в процессе
-    void tryNextMove(Chessboard *chessboard);
+    void tryNextMove(Chessboard *chessboard,
+                     short currentX,
+                     short currentY);
 
 public:
     ///
