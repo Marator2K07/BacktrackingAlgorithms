@@ -72,3 +72,8 @@ void Chessboard::print()
         out << Qt::endl;
     }
 }
+
+short Chessboard::getSize() const
+{
+    return size;
+}

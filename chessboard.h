@@ -14,6 +14,7 @@ class Chessboard : public QObject
 public:
     explicit Chessboard(short size, QObject *parent = nullptr);
 
+    short getSize() const;
     short getCurrentCellX() const;
     void setCurrentCellX(short newXIndex);
     short getCurrentCellY() const;
@@ -31,10 +32,7 @@ public:
 
 private:
     short size;
-    short currentCellX;
-    short currentCellY;
     int** cells; // ячейки доски под значения
-    bool isFilled; // все ли ячейки доски были задействованы
 
 signals:
 
