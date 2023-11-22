@@ -34,11 +34,15 @@ void JourneyOfChessKnight::next(Chessboard *chessboard,
             nextX = currentX + movesX[k];
             nextY = currentY + movesY[k];
         }
-    } while (k != 8 && ((0 <= nextX) &&
-                        (nextX < chessboard->getSize()) &&
-                        (0 <= nextY) &&
-                        (nextY < chessboard->getSize()) &&
-                        chessboard->getCells()[nextX][nextY] == 0));
+        // в случае успешности выбора координат - останавливаем цикл
+        if ((0 <= nextX) &&
+            (nextX < chessboard->getSize()) &&
+            (0 <= nextY) &&
+            (nextY < chessboard->getSize()) &&
+            (chessboard->getCells()[nextX][nextY]) == 0) {
+            break;
+        }
+    } while (k != 8);
     eos = (k == 8);
 }
 
@@ -83,6 +87,7 @@ void JourneyOfChessKnight::startTour(Chessboard *chessboard,
     clear(chessboard);
     // cразу заполняем значение стартовой ячейки
     // пытаемся сделать следующий ход
-    chessboard->getCells()[startX][startY] = 1;
+    i = 1;
+    chessboard->getCells()[startX][startY] = i;
     tryNextMove(chessboard, startX, startY);
 }
