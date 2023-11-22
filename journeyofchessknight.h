@@ -61,7 +61,12 @@ public:
     /// \brief clear
     /// чистка ходов для определенной доски
     void clear(Chessboard *chessboard);
-
+    ///
+    /// \brief startTour
+    /// метод запуска "путешествия" шахматного коня
+    void startTour(Chessboard *chessboard,
+                   short startX,
+                   short startY);
 };
 
 #endif // JOURNEYOFCHESSKNIGHT_H

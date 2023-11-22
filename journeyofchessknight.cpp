@@ -75,3 +75,14 @@ void JourneyOfChessKnight::clear(Chessboard *chessboard)
 {
     chessboard->clear();
 }
+
+void JourneyOfChessKnight::startTour(Chessboard *chessboard,
+                                     short startX,
+                                     short startY)
+{
+    clear(chessboard);
+    // cразу заполняем значение стартовой ячейки
+    // пытаемся сделать следующий ход
+    chessboard->getCells()[startX][startY] = 1;
+    tryNextMove(chessboard, startX, startY);
+}
