@@ -20,14 +20,10 @@ private:
     const short movesSize = 8;
     short *movesX; // вспомогательный массив ходов коня по оси Х
     short *movesY; // вспомогательный массив ходов коня по оси Y
-    bool eos; // условие, что ходов больше нет
-
-    short nextX; // следующая координата путешествия коня
-    short nextY; // следующая координата путешествия коня
-
     bool isDone; // могут ли быть осуществлены последующие ход/хода
-    short k; // вспомогательный индекс хода
-    short i; // индекс текущего хода
+
+    short beginX; // стартовая координата определенного хода
+    short beginY; // стартовая координата определенного хода
 
     ///
     /// \brief canBeDone
@@ -35,26 +31,32 @@ private:
     /// ли запись в следующую ячейку порядкового номера хода
     bool canBeDone(Chessboard *chessboard,
                    short currentX,
-                   short currentY);
+                   short currentY,
+                   short i);
     ///
     /// \brief next
     /// выбор следующего допустимого хода
     void next(Chessboard *chessboard,
-              short currentX,
-              short currentY);
+              short *nextX,
+              short *nextY,
+              short *k,
+              bool *eos);
     ///
     /// \brief first
     /// порождение первого допустимого хода
     void first(Chessboard *chessboard,
-               short currentX,
-               short currentY);
+               short *nextX,
+               short *nextY,
+               short *k,
+               bool *eos);
     ///
     /// \brief tryNextMove
     /// метод говорит сам за себя - попытка сделать
     /// следующий ход, успешный он или нет, узнается в процессе
     void tryNextMove(Chessboard *chessboard,
                      short currentX,
-                     short currentY);
+                     short currentY,
+                     short i);
 
 public:
     ///
