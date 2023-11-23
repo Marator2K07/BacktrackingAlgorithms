@@ -16,6 +16,7 @@ bool JourneyOfChessKnight::canBeDone(Chessboard *chessboard,
     // сначала мы сразу заполняем ячейку номером сделанного
     // хода, и в случае неудачи, можем даже "откатить операцию"
     chessboard->getCells()[currentX][currentY] = i;
+    chessboard->print();
     tryNextMove(chessboard, currentX, currentY, i);
     if (!isDone) {
         chessboard->getCells()[currentX][currentY] = 0;
@@ -24,6 +25,8 @@ bool JourneyOfChessKnight::canBeDone(Chessboard *chessboard,
 }
 
 void JourneyOfChessKnight::next(Chessboard *chessboard,
+                                short *thisX,
+                                short *thisY,
                                 short *nextX,
                                 short *nextY,
                                 short *k,
@@ -34,8 +37,8 @@ void JourneyOfChessKnight::next(Chessboard *chessboard,
     do {
         (*k)++;
         if (*k < 8) {
-            *nextX = beginX + movesX[*k];
-            *nextY = beginY + movesY[*k];
+            *nextX = *thisX + movesX[*k];
+            *nextY = *thisY + movesY[*k];
         }
         // в случае успешности выбора координат - останавливаем цикл
         if ((0 <= *nextX) &&
@@ -51,6 +54,8 @@ void JourneyOfChessKnight::next(Chessboard *chessboard,
 
 
 void JourneyOfChessKnight::first(Chessboard *chessboard,
+                                 short *thisX,
+                                 short *thisY,
                                  short *nextX,
                                  short *nextY,
                                  short *k,
@@ -58,7 +63,7 @@ void JourneyOfChessKnight::first(Chessboard *chessboard,
 {
     *eos = false;
     *k = -1; // таким образом косвенно выбираем ход
-    next(chessboard, nextX, nextY, k, eos);
+    next(chessboard, thisX, thisY, nextX, nextY, k, eos);
 }
 
 void JourneyOfChessKnight::tryNextMove(Chessboard *chessboard,
@@ -67,20 +72,19 @@ void JourneyOfChessKnight::tryNextMove(Chessboard *chessboard,
                                        short i)
 {
     // подготовка
-    beginX = currentX;
-    beginY = currentY;
+    short *thisX = new short{currentX};
+    short *thisY = new short{currentY};
     short *nextX = new short; // координата следующего потенциального хода
     short *nextY = new short; // координата следующего потенциального хода
     short *k = new short; // вспомогательный индекс хода
     bool *eos = new bool; // условие, что ходов больше нет
 
     // пытаемся сделать ход пока есть место на доске
-    if (i < chessboard->getSize()*
-            chessboard->getSize()) {
-        first(chessboard, nextX, nextY, k, eos); // в приоритете всегда первый вариант хода коня
+    if (i < chessboard->getSize() * chessboard->getSize() - 1) {
+        first(chessboard, thisX, thisY, nextX, nextY, k, eos); // в приоритете всегда первый вариант хода коня
         // пытаемся найти доступный следующий ход
         while (!(*eos) && !canBeDone(chessboard, *nextX, *nextY, i+1)) {
-            next(chessboard, nextX, nextY, k, eos);
+            next(chessboard, thisX, thisY, nextX, nextY, k, eos);
         }
         isDone = !eos;
     } else {

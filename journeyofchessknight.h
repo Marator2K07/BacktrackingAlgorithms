@@ -22,9 +22,6 @@ private:
     short *movesY; // вспомогательный массив ходов коня по оси Y
     bool isDone; // могут ли быть осуществлены последующие ход/хода
 
-    short beginX; // стартовая координата определенного хода
-    short beginY; // стартовая координата определенного хода
-
     ///
     /// \brief canBeDone
     /// данным методом мы проверяем, возможна
@@ -37,6 +34,8 @@ private:
     /// \brief next
     /// выбор следующего допустимого хода
     void next(Chessboard *chessboard,
+              short *thisX,
+              short *thisY,
               short *nextX,
               short *nextY,
               short *k,
@@ -45,6 +44,8 @@ private:
     /// \brief first
     /// порождение первого допустимого хода
     void first(Chessboard *chessboard,
+               short *thisX,
+               short *thisY,
                short *nextX,
                short *nextY,
                short *k,
