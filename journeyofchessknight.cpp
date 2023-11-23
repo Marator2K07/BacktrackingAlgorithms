@@ -80,7 +80,7 @@ void JourneyOfChessKnight::tryNextMove(Chessboard *chessboard,
     bool *eos = new bool; // условие, что ходов больше нет
 
     // пытаемся сделать ход пока есть место на доске
-    if (i < chessboard->getSize() * chessboard->getSize() - 1) {
+    if (i < chessboard->getSize() * chessboard->getSize()) {
         first(chessboard, thisX, thisY, nextX, nextY, k, eos); // в приоритете всегда первый вариант хода коня
         // пытаемся найти доступный следующий ход
         while (!(*eos) && !canBeDone(chessboard, *nextX, *nextY, i+1)) {
@@ -90,6 +90,14 @@ void JourneyOfChessKnight::tryNextMove(Chessboard *chessboard,
     } else {
         isDone = true;        
     }
+
+    // после использования не забываем чистить память
+    delete thisX;
+    delete thisY;
+    delete nextX;
+    delete nextY;
+    delete k;
+    delete eos;
 }
 
 void JourneyOfChessKnight::clear(Chessboard *chessboard)
