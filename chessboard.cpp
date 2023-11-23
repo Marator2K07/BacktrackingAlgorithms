@@ -37,6 +37,7 @@ void Chessboard::print()
         }
         out << Qt::endl;
     }
+    out << Qt::endl;
 }
 
 void Chessboard::clear()
