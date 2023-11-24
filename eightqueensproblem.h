@@ -27,11 +27,10 @@ private:
 
     ///
     /// \brief canBeDone
-    /// проверяем, возможно ли поставить королеву
-    /// в следующую безопасную от всех позицию
-    bool canBeDone(Chessboard *chessboard,
-                   short *rowIndex,
-                   short columnIndex);
+    /// ставим фигуру на найденную безопасную позицию
+    /// и ищем следующую(позицию), в случае неудачи -
+    /// откатываемся назад
+    bool canBeDone(short *rowIndex, short columnIndex);
     ///
     /// \brief next
     /// выбор следующей безопасной позиции для ферзя
