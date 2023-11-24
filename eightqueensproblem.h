@@ -26,6 +26,13 @@ private:
     bool c[arrSize*2-1]{true}; // отсутствие ферзей в \ - диагоналях
 
     ///
+    /// \brief canBeDone
+    /// проверяем, возможно ли поставить королеву
+    /// в следующую безопасную от всех позицию
+    bool canBeDone(Chessboard *chessboard,
+                   short *rowIndex,
+                   short columnIndex);
+    ///
     /// \brief next
     /// выбор следующей безопасной позиции для ферзя
     void next(bool *endOfOptions,
