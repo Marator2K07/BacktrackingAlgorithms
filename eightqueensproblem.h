@@ -18,12 +18,11 @@ public:
     explicit EightQueensProblem(QObject *parent = nullptr);
 
 private:
-    short correctChessboardSize = 8;
-    static short const arrSize = 8;
-    int x[arrSize]{-1}; // положение ферзей в столбцах
-    bool a[arrSize]{true}; // отсутствие ферзей в рядах
-    bool b[arrSize*2-1]{true}; // отсутствие ферзей в / - диагоналях
-    bool c[arrSize*2-1]{true}; // отсутствие ферзей в \ - диагоналях
+    static short const сhessboardSize = 8;
+    int x[сhessboardSize]{-1}; // положение ферзей в столбцах
+    bool a[сhessboardSize]{true}; // отсутствие ферзей в рядах
+    bool b[сhessboardSize*2-1]{true}; // отсутствие ферзей в / - диагоналях
+    bool c[сhessboardSize*2-1]{true}; // отсутствие ферзей в \ - диагоналях
 
     ///
     /// \brief canBeDone

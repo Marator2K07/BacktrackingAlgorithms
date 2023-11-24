@@ -16,7 +16,7 @@ bool EightQueensProblem::canBeDone(Chessboard *chessboard,
     x[columnIndex] = *rowIndex;
     a[*rowIndex] = false;
     b[columnIndex + (*rowIndex)] = false;
-    c[columnIndex - (*rowIndex) + correctChessboardSize - 1] = false;
+    c[columnIndex - (*rowIndex) + сhessboardSize - 1] = false;
     // а теперь ставим фигуру на доску
     chessboard->getCells()[columnIndex][*rowIndex];
     // тут должен быть метод, пытающийся найти следующее безопасное место
@@ -28,7 +28,7 @@ bool EightQueensProblem::canBeDone(Chessboard *chessboard,
         x[columnIndex] = *rowIndex;
         a[*rowIndex] = true;
         b[columnIndex + (*rowIndex)] = true;
-        c[columnIndex - (*rowIndex) + correctChessboardSize - 1] = true;
+        c[columnIndex - (*rowIndex) + сhessboardSize - 1] = true;
         // убираем фигуру с доски
         chessboard->getCells()[columnIndex][*rowIndex];
     }
@@ -49,11 +49,11 @@ void EightQueensProblem::next(bool *endOfOptions,
         // если нашли ее, то останавливаемся
         if (a[*rowIndex] &&
             b[columnIndex+(*rowIndex)] &&
-            c[columnIndex-(*rowIndex) + correctChessboardSize - 1]) {
+            c[columnIndex-(*rowIndex) + сhessboardSize - 1]) {
             break;
         }
-    } while (*rowIndex != correctChessboardSize);
-    *endOfOptions = (*rowIndex == correctChessboardSize);
+    } while (*rowIndex != сhessboardSize);
+    *endOfOptions = (*rowIndex == сhessboardSize);
 }
 
 void EightQueensProblem::first(bool *endOfOptions,
