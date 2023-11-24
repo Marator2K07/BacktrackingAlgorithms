@@ -6,12 +6,11 @@ EightQueensProblem::EightQueensProblem(QObject *parent)
 
 }
 
-bool EightQueensProblem::canBeDone(Chessboard *chessboard,
-                                   short *rowIndex,
-                                   short columnIndex)
+bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
 {
     // подготовка
     bool *isDone = new bool{false};
+
     // условная операция УСТАНОВИТЬ ФЕРЗЯ
     x[columnIndex] = *rowIndex;
     a[*rowIndex] = false;
@@ -19,9 +18,8 @@ bool EightQueensProblem::canBeDone(Chessboard *chessboard,
     c[columnIndex - (*rowIndex) + сhessboardSize - 1] = false;
     // а теперь ставим фигуру на доску
     chessboard->getCells()[columnIndex][*rowIndex];
-    // тут должен быть метод, пытающийся найти следующее безопасное место
-    //
-
+    // теперь пошла вложенная часть с попыткой сделать следующий ход!
+    tryFindNextPos(columnIndex, isDone);
     // если не получилось продвинуться то отменяем все свой/свои ход/ходы!
     if (!(*isDone)) {
         // условная операция УБРАТЬ ФЕРЗЯ
@@ -32,6 +30,7 @@ bool EightQueensProblem::canBeDone(Chessboard *chessboard,
         // убираем фигуру с доски
         chessboard->getCells()[columnIndex][*rowIndex];
     }
+
     // после использования, очищаем память, перед этим ее запоминая
     // после можно спокойно вернуть результат
     bool result{*isDone};
@@ -78,7 +77,7 @@ void EightQueensProblem::tryFindNextPos(short columnIndex, bool *isDone)
         first(endOfOptions, rowIndex, columnIndex);
         // пытаемся найти следующее доступное безопасное место
         while (!(*endOfOptions) &&
-               !canBeDone(chessboard, rowIndex, columnIndex)) {
+               !canBeDone(rowIndex, columnIndex)) {
             next(endOfOptions, rowIndex, columnIndex);
         }
         *isDone = !endOfOptions;
