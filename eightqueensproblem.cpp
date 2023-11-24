@@ -34,7 +34,7 @@ bool EightQueensProblem::canBeDone(Chessboard *chessboard,
     }
     // после использования, очищаем память, перед этим ее запоминая
     // после можно спокойно вернуть результат
-    bool result{isDone};
+    bool result{*isDone};
     delete isDone;
     return result;
 }
@@ -64,4 +64,29 @@ void EightQueensProblem::first(bool *endOfOptions,
     *endOfOptions = false;
     (*rowIndex) = -1;
     next(endOfOptions, rowIndex, columnIndex); // сам поиск
+}
+
+void EightQueensProblem::tryFindNextPos(short columnIndex, bool *isDone)
+{
+    // подготовка переменных для вызывающих методов
+    bool *endOfOptions = new bool;
+    short *rowIndex = new short;
+
+    // пытаемся расставить все 8 фигур фигур по доске
+    if (columnIndex < сhessboardSize) {
+        // в приоритете всегда первый вариант
+        first(endOfOptions, rowIndex, columnIndex);
+        // пытаемся найти следующее доступное безопасное место
+        while (!(*endOfOptions) &&
+               !canBeDone(chessboard, rowIndex, columnIndex)) {
+            next(endOfOptions, rowIndex, columnIndex);
+        }
+        *isDone = !endOfOptions;
+    } else {
+        *isDone = true;
+    }
+
+    // чистим выделенную память
+    delete endOfOptions;
+    delete rowIndex;
 }

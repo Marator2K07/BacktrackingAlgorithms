@@ -23,6 +23,7 @@ private:
     bool a[сhessboardSize]{true}; // отсутствие ферзей в рядах
     bool b[сhessboardSize*2-1]{true}; // отсутствие ферзей в / - диагоналях
     bool c[сhessboardSize*2-1]{true}; // отсутствие ферзей в \ - диагоналях
+    Chessboard *chessboard = nullptr; // текущая шахматная доска
 
     ///
     /// \brief canBeDone
@@ -43,6 +44,12 @@ private:
     void first(bool *endOfOptions,
                short *rowIndex,
                short columnIndex);
+    ///
+    /// \brief tryFindNextPos
+    /// попытка найти следующую безопасную позицию для королевы,
+    /// успешная она будет или нет, узнается в процессе
+    /// (если попытка успешна, то позиция остается занята)
+    void tryFindNextPos(short columnIndex, bool *isDone);
 };
 
 #endif // EIGHTQUEENSPROBLEM_H
