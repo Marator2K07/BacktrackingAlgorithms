@@ -7,16 +7,18 @@ EightQueensProblem::EightQueensProblem(QObject *parent)
 }
 
 void EightQueensProblem::next(bool *endOfOptions,
-                              short *j,
-                              short i)
+                              short *rowIndex,
+                              short columnIndex)
 {
     // поиск безопасной позиции
     do {
-        (*j)++;
+        (*rowIndex)++;
         // если нашли ее, то останавливаемся
-        if (a[*j] && b[i+(*j)] && c[i-(*j) + correctChessboardSize - 1]) {
+        if (a[*rowIndex] &&
+            b[columnIndex+(*rowIndex)] &&
+            c[columnIndex-(*rowIndex) + correctChessboardSize - 1]) {
             break;
         }
-    } while (*j != correctChessboardSize);
-    *endOfOptions = (*j == correctChessboardSize);
+    } while (*rowIndex != correctChessboardSize);
+    *endOfOptions = (*rowIndex == correctChessboardSize);
 }

@@ -22,15 +22,15 @@ private:
     static short const arrSize = 8;
     int x[arrSize]{-1}; // положение ферзей в столбцах
     bool a[arrSize]{true}; // отсутствие ферзей в рядах
-    bool b[arrSize*2]{true}; // отсутствие ферзей в / - диагоналях
-    bool c[arrSize*2]{true}; // отсутствие ферзей в \ - диагоналях
+    bool b[arrSize*2-1]{true}; // отсутствие ферзей в / - диагоналях
+    bool c[arrSize*2-1]{true}; // отсутствие ферзей в \ - диагоналях
 
     ///
     /// \brief next
     /// выбор следующей безопасной позиции для ферзя
     void next(bool *endOfOptions,
-              short *k,
-              short i);
+              short *rowIndex,
+              short columnIndex);
 };
 
 #endif // EIGHTQUEENSPROBLEM_H
