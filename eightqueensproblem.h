@@ -31,6 +31,12 @@ private:
     void next(bool *endOfOptions,
               short *rowIndex,
               short columnIndex);
+    ///
+    /// \brief first
+    /// порождение первой возможной безопасной позиции для ферзя
+    void first(bool *endOfOptions,
+               short *rowIndex,
+               short columnIndex);
 };
 
 #endif // EIGHTQUEENSPROBLEM_H
