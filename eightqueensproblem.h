@@ -15,7 +15,12 @@ class EightQueensProblem : public QObject
 public:
     explicit EightQueensProblem(QObject *parent = nullptr);
 
-signals:
+private:
+    static short const arrSize = 8;
+    int x[arrSize]{-1}; // положение ферзей в столбцах
+    bool a[arrSize]{true}; // отсутствие ферзей в рядах
+    bool b[arrSize*2]; // отсутствие ферзей в / - диагоналях
+    bool c[arrSize*2]; // отсутствие ферзей в \ - диагоналях
 
 };
 
