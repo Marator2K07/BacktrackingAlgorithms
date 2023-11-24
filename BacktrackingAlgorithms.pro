@@ -8,6 +8,7 @@ CONFIG += c++17 cmdline
 
 SOURCES += \
         chessboard.cpp \
+        eightqueensproblem.cpp \
         journeyofchessknight.cpp \
         main.cpp
 
@@ -18,4 +19,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     chessboard.h \
+    eightqueensproblem.h \
     journeyofchessknight.h
