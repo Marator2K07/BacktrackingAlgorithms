@@ -3,7 +3,19 @@
 EightQueensProblem::EightQueensProblem(QObject *parent)
     : QObject{parent}
 {
+    reset();
+}
 
+void EightQueensProblem::reset()
+{
+    for (int i = 0; i < сhessboardSize; ++i) {
+        x[i] = -1;
+        a[i] = true;
+    }
+    for (int i = 0; i < сhessboardSize * 2 - 1; ++i) {
+        b[i] = true;
+        c[i] = true;
+    }
 }
 
 Chessboard *EightQueensProblem::getChessboard() const
@@ -107,6 +119,7 @@ bool EightQueensProblem::attemptToSolve()
 
     // расчет начнем только если доска была выбрана и ее размер корректен
     if (chessboard != nullptr && chessboard->getSize() == сhessboardSize) {
+        chessboard->clear();
         tryFindNextPos(0, isDone);
     } else {
         *isDone = false;

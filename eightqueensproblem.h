@@ -19,12 +19,17 @@ public:
 
 private:
     static short const сhessboardSize = 8;
-    int x[сhessboardSize]{-1}; // положение ферзей в столбцах
-    bool a[сhessboardSize]{true}; // отсутствие ферзей в рядах
-    bool b[сhessboardSize*2-1]{true}; // отсутствие ферзей в / - диагоналях
-    bool c[сhessboardSize*2-1]{true}; // отсутствие ферзей в \ - диагоналях
+    int x[сhessboardSize]; // положение ферзей в столбцах
+    bool a[сhessboardSize]; // отсутствие ферзей в рядах
+    bool b[сhessboardSize*2-1]; // отсутствие ферзей в / - диагоналях
+    bool c[сhessboardSize*2-1]; // отсутствие ферзей в \ - диагоналях
     Chessboard *chessboard = nullptr; // текущая шахматная доска
 
+    ///
+    /// \brief reset
+    /// сброс всех полей к начальным значениям для
+    /// будущих расчетов
+    void reset();
     ///
     /// \brief canBeDone
     /// ставим фигуру на найденную безопасную позицию
