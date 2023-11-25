@@ -1,21 +1,32 @@
 #include <QCoreApplication>
 
-#include "chessboard.h"
 #include "journeyofchessknight.h"
+#include "eightqueensproblem.h"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    Chessboard *chessboard = new Chessboard(5);
-    chessboard->clear();
-    JourneyOfChessKnight *knightJournay = new JourneyOfChessKnight();
+    Chessboard *chessboard = new Chessboard(8);
+    chessboard->clear();    
 
     qInfo() << "Start application";
     chessboard->print();
-    knightJournay->startTour(chessboard, 2, 2);
+
+    //JourneyOfChessKnight *knightJournay = new JourneyOfChessKnight();
+    //knightJournay->startTour(chessboard, 2, 2);
+    //qInfo() << "After journay";
+    //chessboard->print();
+
+    EightQueensProblem *queensProblem = new EightQueensProblem();
+    queensProblem->setChessboard(chessboard);
     qInfo() << "After journay";
-    chessboard->print();
+    bool done = queensProblem->attemptToSolve();
+    if (done) {
+        chessboard->print();
+    } else {
+        qInfo() << "Error";
+    }
 
     return a.exec();
 }
