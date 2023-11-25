@@ -39,18 +39,20 @@ bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
     b[columnIndex + (*rowIndex)] = false;
     c[columnIndex - (*rowIndex) + сhessboardSize - 1] = false;
     // а теперь ставим фигуру на доску
-    chessboard->getCells()[columnIndex][*rowIndex];
+    chessboard->getCells()[*rowIndex][columnIndex] = columnIndex + 1;
+    chessboard->print(); // после "шага вперед" печатаем текущий результат
     // теперь пошла вложенная часть с попыткой сделать следующий ход!
-    tryFindNextPos(columnIndex, isDone);
+    tryFindNextPos(columnIndex + 1, isDone);
     // если не получилось продвинуться то отменяем все свой/свои ход/ходы!
     if (!(*isDone)) {
         // условная операция УБРАТЬ ФЕРЗЯ
-        x[columnIndex] = *rowIndex;
+        x[columnIndex] = -1;
         a[*rowIndex] = true;
         b[columnIndex + (*rowIndex)] = true;
         c[columnIndex - (*rowIndex) + сhessboardSize - 1] = true;
         // убираем фигуру с доски
-        chessboard->getCells()[columnIndex][*rowIndex];
+        chessboard->getCells()[*rowIndex][columnIndex] = 0;
+        chessboard->print(); // после "шага назад" печатаем текущий результат
     }
 
     // после использования, очищаем память, перед этим ее запоминая
