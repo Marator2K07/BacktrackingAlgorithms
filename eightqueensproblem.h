@@ -49,6 +49,13 @@ private:
     /// успешная она будет или нет, узнается в процессе
     /// (если попытка успешна, то позиция остается занята)
     void tryFindNextPos(short columnIndex, bool *isDone);
+
+public:
+    ///
+    /// \brief attemptToSolve
+    /// попытка решить поставленную задачу, описанную в классе
+    /// в случае удачи - возвращается истина, иначе - ложь
+    bool attemptToSolve();
 };
 
 #endif // EIGHTQUEENSPROBLEM_H

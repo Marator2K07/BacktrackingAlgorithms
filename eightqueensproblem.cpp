@@ -89,3 +89,21 @@ void EightQueensProblem::tryFindNextPos(short columnIndex, bool *isDone)
     delete endOfOptions;
     delete rowIndex;
 }
+
+bool EightQueensProblem::attemptToSolve()
+{
+    // подготовка для будущего расчета
+    bool *isDone = new bool;
+
+    // расчет начнем только если доска была выбрана и ее размер корректен
+    if (chessboard != nullptr && chessboard->getSize() != сhessboardSize) {
+        tryFindNextPos(0, isDone);
+    } else {
+        *isDone = false;
+    }
+
+    // чистим память, одновременно запоминая результат
+    bool result{*isDone};
+    delete isDone;
+    return result;
+}
