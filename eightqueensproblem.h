@@ -56,6 +56,9 @@ public:
     /// попытка решить поставленную задачу, описанную в классе
     /// в случае удачи - возвращается истина, иначе - ложь
     bool attemptToSolve();
+
+    Chessboard *getChessboard() const;
+    void setChessboard(Chessboard *newChessboard);
 };
 
 #endif // EIGHTQUEENSPROBLEM_H

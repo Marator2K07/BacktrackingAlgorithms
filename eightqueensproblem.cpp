@@ -6,6 +6,16 @@ EightQueensProblem::EightQueensProblem(QObject *parent)
 
 }
 
+Chessboard *EightQueensProblem::getChessboard() const
+{
+    return chessboard;
+}
+
+void EightQueensProblem::setChessboard(Chessboard *newChessboard)
+{
+    chessboard = newChessboard;
+}
+
 bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
 {
     // подготовка
