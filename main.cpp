@@ -20,9 +20,9 @@ int main(int argc, char *argv[])
 
     EightQueensProblem *queensProblem = new EightQueensProblem();
     queensProblem->setChessboard(chessboard);
-    qInfo() << "After journay";
     bool done = queensProblem->attemptToSolve();
     if (done) {
+        qInfo() << "Result:";
         chessboard->print();
     } else {
         qInfo() << "Error";
