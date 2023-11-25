@@ -104,7 +104,7 @@ void EightQueensProblem::tryFindNextPos(short columnIndex, bool *isDone)
                !canBeDone(rowIndex, columnIndex)) {
             next(endOfOptions, rowIndex, columnIndex);
         }
-        *isDone = !endOfOptions;
+        *isDone = !(*endOfOptions);
     } else {
         *isDone = true;
     }
