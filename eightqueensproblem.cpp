@@ -106,7 +106,7 @@ bool EightQueensProblem::attemptToSolve()
     bool *isDone = new bool;
 
     // расчет начнем только если доска была выбрана и ее размер корректен
-    if (chessboard != nullptr && chessboard->getSize() != сhessboardSize) {
+    if (chessboard != nullptr && chessboard->getSize() == сhessboardSize) {
         tryFindNextPos(0, isDone);
     } else {
         *isDone = false;
