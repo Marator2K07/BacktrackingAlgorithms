@@ -25,6 +25,9 @@ private:
     Chessboard *chessboard = nullptr; // текущая шахматная доска
     bool isDone; // могут ли быть осуществлены последующие ход/хода
 
+    short solutionsCount; // количество доступных решений задачи
+    // (вычисляется только через метод allSolutions())
+
     ///
     /// \brief reset
     /// сброс всех полей к начальным значениям для
@@ -61,6 +64,12 @@ public:
     /// попытка решить поставленную задачу, описанную в классе
     /// в случае удачи - возвращается истина, иначе - ложь
     bool attemptToSolve();
+    ///
+    /// \brief allSolutions
+    /// вывод всех возможных решений поставленной задачи,
+    /// а также их подсчет (количества решений), причем эти
+    /// решения находятся через упрощенный метод tryFindNextPosSimple
+    short allSolutions();
 
     Chessboard *getChessboard() const;
     void setChessboard(Chessboard *newChessboard);

@@ -5,6 +5,7 @@ EightQueensProblem::EightQueensProblem(QObject *parent)
 {
     reset();
     isDone = false;
+    solutionsCount = 0;
 }
 
 void EightQueensProblem::reset()
@@ -116,4 +117,11 @@ bool EightQueensProblem::attemptToSolve()
     }
 
     return isDone;
+}
+
+short EightQueensProblem::allSolutions()
+{
+    // место для пока не написанного метода tryFindNextPosSimple!
+
+    return solutionsCount;
 }
