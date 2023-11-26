@@ -19,7 +19,6 @@ public:
 
 private:
     static short const сhessboardSize = 8;
-    int x[сhessboardSize]; // положение ферзей в столбцах
     bool a[сhessboardSize]; // отсутствие ферзей в рядах
     bool b[сhessboardSize*2-1]; // отсутствие ферзей в / - диагоналях
     bool c[сhessboardSize*2-1]; // отсутствие ферзей в \ - диагоналях

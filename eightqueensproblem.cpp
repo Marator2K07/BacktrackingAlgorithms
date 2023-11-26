@@ -10,7 +10,6 @@ EightQueensProblem::EightQueensProblem(QObject *parent)
 void EightQueensProblem::reset()
 {
     for (int i = 0; i < сhessboardSize; ++i) {
-        x[i] = -1;
         a[i] = true;
     }
     for (int i = 0; i < сhessboardSize * 2 - 1; ++i) {
@@ -32,7 +31,6 @@ void EightQueensProblem::setChessboard(Chessboard *newChessboard)
 bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
 {
     // условная операция УСТАНОВИТЬ ФЕРЗЯ
-    x[columnIndex] = *rowIndex;
     a[*rowIndex] = false;
     b[columnIndex + (*rowIndex)] = false;
     c[columnIndex - (*rowIndex) + сhessboardSize - 1] = false;
@@ -44,7 +42,6 @@ bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
     // если не получилось продвинуться то отменяем все свой/свои ход/ходы!
     if (!isDone) {
         // условная операция УБРАТЬ ФЕРЗЯ
-        x[columnIndex] = -1;
         a[*rowIndex] = true;
         b[columnIndex + (*rowIndex)] = true;
         c[columnIndex - (*rowIndex) + сhessboardSize - 1] = true;
