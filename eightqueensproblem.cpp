@@ -106,6 +106,20 @@ void EightQueensProblem::tryFindNextPos(short columnIndex)
     delete rowIndex;
 }
 
+void EightQueensProblem::tryFindNextPosSimple(short columnIndex)
+{
+    // подготовка переменных для вызывающих методов
+    short *rowIndex = new short;
+
+    // пытаемся поставить фигуру
+    if (columnIndex < сhessboardSize) {
+
+    }
+
+    // чистим выделенную память
+    delete rowIndex;
+}
+
 bool EightQueensProblem::attemptToSolve()
 {
     // расчет начнем только если доска была выбрана и ее размер корректен

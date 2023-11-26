@@ -57,6 +57,12 @@ private:
     /// успешная она будет или нет, узнается в процессе
     /// (если попытка успешна, то позиция остается занята)
     void tryFindNextPos(short columnIndex);
+    ///
+    /// \brief tryFindNextPosSimple
+    /// попытка найти следующую безопасную позицию для королевы,
+    /// в отличие от метода tryFindNextPos имеет упрощенную реализацию
+    /// без вызовов методов first, next или canBeDone
+    void tryFindNextPosSimple(short columnIndex);
 
 public:
     ///
