@@ -24,6 +24,7 @@ private:
     bool b[сhessboardSize*2-1]; // отсутствие ферзей в / - диагоналях
     bool c[сhessboardSize*2-1]; // отсутствие ферзей в \ - диагоналях
     Chessboard *chessboard = nullptr; // текущая шахматная доска
+    bool isDone; // могут ли быть осуществлены последующие ход/хода
 
     ///
     /// \brief reset
@@ -53,7 +54,7 @@ private:
     /// попытка найти следующую безопасную позицию для королевы,
     /// успешная она будет или нет, узнается в процессе
     /// (если попытка успешна, то позиция остается занята)
-    void tryFindNextPos(short columnIndex, bool *isDone);
+    void tryFindNextPos(short columnIndex);
 
 public:
     ///

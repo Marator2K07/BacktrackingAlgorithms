@@ -4,6 +4,7 @@ EightQueensProblem::EightQueensProblem(QObject *parent)
     : QObject{parent}
 {
     reset();
+    isDone = false;
 }
 
 void EightQueensProblem::reset()
@@ -30,9 +31,6 @@ void EightQueensProblem::setChessboard(Chessboard *newChessboard)
 
 bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
 {
-    // подготовка
-    bool *isDone = new bool{false};
-
     // условная операция УСТАНОВИТЬ ФЕРЗЯ
     x[columnIndex] = *rowIndex;
     a[*rowIndex] = false;
@@ -42,9 +40,9 @@ bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
     chessboard->getCells()[*rowIndex][columnIndex] = columnIndex + 1;
     chessboard->print(); // после "шага вперед" печатаем текущий результат
     // теперь пошла вложенная часть с попыткой сделать следующий ход!
-    tryFindNextPos(columnIndex + 1, isDone);
+    tryFindNextPos(columnIndex + 1);
     // если не получилось продвинуться то отменяем все свой/свои ход/ходы!
-    if (!(*isDone)) {
+    if (!isDone) {
         // условная операция УБРАТЬ ФЕРЗЯ
         x[columnIndex] = -1;
         a[*rowIndex] = true;
@@ -55,11 +53,7 @@ bool EightQueensProblem::canBeDone(short *rowIndex, short columnIndex)
         chessboard->print(); // после "шага назад" печатаем текущий результат
     }
 
-    // после использования, очищаем память, перед этим ее запоминая
-    // после можно спокойно вернуть результат
-    bool result{*isDone};
-    delete isDone;
-    return result;
+    return isDone;
 }
 
 void EightQueensProblem::next(bool *endOfOptions,
@@ -89,7 +83,7 @@ void EightQueensProblem::first(bool *endOfOptions,
     next(endOfOptions, rowIndex, columnIndex); // сам поиск
 }
 
-void EightQueensProblem::tryFindNextPos(short columnIndex, bool *isDone)
+void EightQueensProblem::tryFindNextPos(short columnIndex)
 {
     // подготовка переменных для вызывающих методов
     bool *endOfOptions = new bool;
@@ -104,9 +98,9 @@ void EightQueensProblem::tryFindNextPos(short columnIndex, bool *isDone)
                !canBeDone(rowIndex, columnIndex)) {
             next(endOfOptions, rowIndex, columnIndex);
         }
-        *isDone = !(*endOfOptions);
+        isDone = !(*endOfOptions);
     } else {
-        *isDone = true;
+        isDone = true;
     }
 
     // чистим выделенную память
@@ -116,19 +110,13 @@ void EightQueensProblem::tryFindNextPos(short columnIndex, bool *isDone)
 
 bool EightQueensProblem::attemptToSolve()
 {
-    // подготовка для будущего расчета
-    bool *isDone = new bool;
-
     // расчет начнем только если доска была выбрана и ее размер корректен
     if (chessboard != nullptr && chessboard->getSize() == сhessboardSize) {
         chessboard->clear();
-        tryFindNextPos(0, isDone);
+        tryFindNextPos(0);
     } else {
-        *isDone = false;
+        isDone = false;
     }
 
-    // чистим память, одновременно запоминая результат
-    bool result{*isDone};
-    delete isDone;
-    return result;
+    return isDone;
 }
