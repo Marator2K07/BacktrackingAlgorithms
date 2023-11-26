@@ -108,16 +108,27 @@ void EightQueensProblem::tryFindNextPos(short columnIndex)
 
 void EightQueensProblem::tryFindNextPosSimple(short columnIndex)
 {
-    // подготовка переменных для вызывающих методов
-    short *rowIndex = new short;
-
-    // пытаемся поставить фигуру
+    // пытаемся поставить фигуру/фигуры
     if (columnIndex < сhessboardSize) {
-
+        for (int rowIndex = 0; rowIndex < сhessboardSize; ++rowIndex) {
+            // если нашли безопасное место место для королевы, то
+            if (a[*rowIndex] &&
+                b[columnIndex+(*rowIndex)] &&
+                c[columnIndex-(*rowIndex) + сhessboardSize - 1]) {
+                // ставим флаги и
+                a[*rowIndex] = false;
+                b[columnIndex + (*rowIndex)] = false;
+                c[columnIndex - (*rowIndex) + сhessboardSize - 1] = false;
+                // фигуру на доску
+                chessboard->getCells()[*rowIndex][columnIndex] = columnIndex + 1;
+                // теперь запускаем слудующий ход
+                tryFindNextPosSimple(columnIndex + 1);
+            }
+        }
+    } else {
+        chessboard->print();
+        solutionsCount ++;
     }
-
-    // чистим выделенную память
-    delete rowIndex;
 }
 
 bool EightQueensProblem::attemptToSolve()
