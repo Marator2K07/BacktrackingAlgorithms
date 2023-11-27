@@ -21,3 +21,5 @@ HEADERS += \
     chessboard.h \
     eightqueensproblem.h \
     journeyofchessknight.h
+
+include(Stable marriages task/Stable marriages task.pri)
