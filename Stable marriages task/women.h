@@ -16,8 +16,16 @@ public:
 
 private:
     short maxRateValue = 100;
-    QHash<Man, short> rateOfMans; // условный список доступных мужчин
+    QHash<Man *, short> rateOfMans; // условный список доступных мужчин
     // с уровнем предпочтения в виде числа (меньше число - выше предпочтение)
+
+public:
+    ///
+    /// \brief randomlyFillRates
+    /// случаное заполнение рейтингов мужчин для данного обьекта женщины,
+    /// причем рейтинги оценки для каждого отдельного обьекта - всегда разные
+    void randomlyFillRates(QList<Man *> mens);
+    void printRates();
 
 };
 
