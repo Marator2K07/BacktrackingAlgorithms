@@ -21,3 +21,12 @@ void Man::randomlyFillRates(QList<Women *> womens)
         rateOfWomens.insert(women, thisRate);
     }
 }
+
+void Man::printRates()
+{
+    QTextStream out(stdout);
+    short i = 1;
+    for (auto [key, value] : rateOfWomens.asKeyValueRange()) {
+        out << i++ <<")Women: " << key << "; her rate - " << value << ";\n";
+    }
+}

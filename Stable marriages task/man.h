@@ -7,6 +7,7 @@
 #include <QHash>
 #include <QRandomGenerator>
 #include <QSet>
+#include <QTextStream>
 
 class Women;
 
@@ -27,6 +28,7 @@ public:
     /// случаное заполнение рейтингов женщин для данного обьекта мужчины,
     /// причем рейтинги оценки для каждого отдельного обьекта - всегда разные
     void randomlyFillRates(QList<Women *> womens);
+    void printRates();
 
 };
 
