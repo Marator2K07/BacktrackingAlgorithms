@@ -6,6 +6,8 @@
 #include <QObject>
 #include <QHash>
 
+class Man;
+
 class Women : public QObject
 {
     Q_OBJECT
