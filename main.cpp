@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 
     EightQueensProblem *queensProblem = new EightQueensProblem();
     queensProblem->setChessboard(chessboard);
+    // если нужно найти первое доступное решение задачи
     bool done = queensProblem->attemptToSolve();
     if (done) {
         qInfo() << "Result:";
@@ -27,6 +28,9 @@ int main(int argc, char *argv[])
     } else {
         qInfo() << "Error";
     }
+    // чтобы найти все доступные решения
+    short solutionsCount = queensProblem->allSolutions();
+    qInfo() << "Solutions founded: " << solutionsCount;
 
     return a.exec();
 }
