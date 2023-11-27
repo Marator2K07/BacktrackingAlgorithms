@@ -113,24 +113,26 @@ void EightQueensProblem::tryFindNextPosSimple(short columnIndex)
         for (int rowIndex = 0; rowIndex < сhessboardSize; ++rowIndex) {
             // если нашли безопасное место место для королевы, то
             if (a[rowIndex] &&
-                b[columnIndex+(rowIndex)] &&
-                c[columnIndex-(rowIndex) + сhessboardSize - 1]) {
+                b[columnIndex + rowIndex] &&
+                c[columnIndex - rowIndex + сhessboardSize - 1]) {
                 // ставим флаги и
                 a[rowIndex] = false;
-                b[columnIndex + (rowIndex)] = false;
-                c[columnIndex - (rowIndex) + сhessboardSize - 1] = false;
+                b[columnIndex + rowIndex] = false;
+                c[columnIndex - rowIndex + сhessboardSize - 1] = false;
                 // фигуру на доску,
                 chessboard->getCells()[rowIndex][columnIndex] = columnIndex + 1;
                 // запускаем слудующий ход и
                 tryFindNextPosSimple(columnIndex + 1);
                 // после нахождения решения - убираем флаги
                 a[rowIndex] = true;
-                b[columnIndex + (rowIndex)] = true;
-                c[columnIndex - (rowIndex) + сhessboardSize - 1] = true;
+                b[columnIndex + rowIndex] = true;
+                c[columnIndex - rowIndex + сhessboardSize - 1] = true;
+                // и фигуру с доски
+                chessboard->getCells()[rowIndex][columnIndex] = 0;
             }
         }
     } else {
-        qInfo() << QString("Answer №[%1]").arg(solutionsCount);
+        qInfo() << QString("Answer number [%1]:").arg(solutionsCount);
         chessboard->print();        
         solutionsCount++;
     }
