@@ -5,6 +5,8 @@
 
 #include <QObject>
 #include <QHash>
+#include <QRandomGenerator>
+#include <QSet>
 
 class Women;
 
@@ -16,8 +18,15 @@ public:
 
 private:
     short maxRateValue = 100;
-    QHash<Women, short> rateOfWomens; // условный список доступных женщин
+    QHash<Women *, short> rateOfWomens; // условный список доступных женщин
     // с уровнем предпочтения в виде числа (меньше число - выше предпочтение)
+
+public:
+    ///
+    /// \brief randomlyFillRates
+    /// случаное заполнение рейтингов женщин для данного обьекта мужчины,
+    /// причем рейтинги оценки для каждого отдельного обьекта - всегда разные
+    void randomlyFillRates(QList<Women *> womens);
 
 };
 
