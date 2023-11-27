@@ -151,7 +151,10 @@ bool EightQueensProblem::attemptToSolve()
 
 short EightQueensProblem::allSolutions()
 {
-    // место для пока не написанного метода tryFindNextPosSimple!
+    reset();
+    chessboard->clear();
+    solutionsCount = 0;
+    tryFindNextPosSimple(0);
 
     return solutionsCount;
 }
