@@ -53,12 +53,23 @@ bool StableMarriages::isStable(Man *man, Women *women)
 void StableMarriages::tryFindCouple(short manIndex)
 {
     // подготовка
-    Man *possibleMan = mans.value(manIndex);
-    Women *possibleWomen;
+    Man *thisMan = mans.value(manIndex);
 
-    // сам алгоритм
+    // пытаемся найти пару
     if (manIndex < numberOfPairs) {
-        // выбор себе пары и всем последующим
+        // смотрим всех претенденток
+        for (Women *women : womens) {
+            // если женщина свободна и брак будет предположительно стабильным
+            if (single[women] && isStable(thisMan, women)) {
+                // официально обьявляем парочку
+                couples.insert(thisMan, women);
+                single[women] = false;
+                // пытаемся найти следующую
+                tryFindCouple(manIndex + 1);
+                // отменяем ход для будущих решений
+                single[women] = true;
+            }
+        }
     } else {
         // тут должны выводить результат возможных пар,
         // не важно, стабильных или нет
