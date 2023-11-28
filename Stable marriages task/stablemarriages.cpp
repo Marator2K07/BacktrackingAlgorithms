@@ -17,3 +17,15 @@ StableMarriages::StableMarriages(short numberOfPairs, QObject *parent)
         women->randomlyFillRates(mans);
     }
 }
+
+void StableMarriages::printInfo()
+{
+    // вывод рейтингов для мужчин
+    for (Man *man : mans) {
+        man->printRates();
+    }
+    // вывод рейтингов для женщин
+    for (Women *women : womens) {
+        women->printRates();
+    }
+}

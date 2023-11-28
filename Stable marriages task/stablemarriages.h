@@ -17,6 +17,12 @@ private:
     QList<Man *> mans; // список мужчин, доступных для брака
     QList<Women *> womens; // список женщин, доступных для брака
 
+public:
+    ///
+    /// \brief printInfo
+    /// вывод всех текущих рейтингов-оценок
+    void printInfo();
+
 };
 
 #endif // STABLEMARRIAGES_H
