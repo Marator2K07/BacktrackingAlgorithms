@@ -16,6 +16,8 @@ private:
     short numberOfPairs; // количество пар браков
     QList<Man *> mans; // список мужчин, доступных для брака
     QList<Women *> womens; // список женщин, доступных для брака
+    QHash<Women *, bool> single; // словарь с информацией о замужности
+
 
 public:
     ///

@@ -16,6 +16,11 @@ StableMarriages::StableMarriages(short numberOfPairs, QObject *parent)
     for (Women *women : womens) {
         women->randomlyFillRates(mans);
     }
+    // изначально все женщины свободны
+    for (Women *women : womens) {
+        single.insert(women, true);
+    }
+}
 }
 
 void StableMarriages::printInfo()
