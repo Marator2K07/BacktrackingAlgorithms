@@ -17,6 +17,7 @@ private:
     QList<Man *> mans; // список мужчин, доступных для брака
     QList<Women *> womens; // список женщин, доступных для брака
     QHash<Women *, bool> single; // словарь с информацией о замужности
+    QHash<Man *, Women *> couples; // словарь с уже обрученными парочками
 
     ///
     /// \brief isStable
