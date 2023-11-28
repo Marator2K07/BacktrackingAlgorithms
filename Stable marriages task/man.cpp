@@ -26,6 +26,7 @@ void Man::printRates()
 {
     QTextStream out(stdout);
     short i = 1;
+    out << "Man " << this << " appreciates:\n";
     for (auto [key, value] : rateOfWomens.asKeyValueRange()) {
         out << i++ <<")Women: " << key << "; her rate - " << value << ";\n";
     }
