@@ -21,7 +21,7 @@ private:
     ///
     /// \brief isStable
     /// оценка стабильности брака (есть ли партнеры лучше текущих)
-    bool isStable();
+    bool isStable(Man *man, Women *women);
 
 public:
     ///

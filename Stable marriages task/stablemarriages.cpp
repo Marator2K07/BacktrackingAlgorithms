@@ -22,12 +22,34 @@ StableMarriages::StableMarriages(short numberOfPairs, QObject *parent)
     }
 }
 
-bool StableMarriages::isStable()
+bool StableMarriages::isStable(Man *man, Women *women)
 {
-    bool stable = true; // будущий результат метода
-    short index = -1;
+    bool stable = true; // будущий результат
 
-    // ..
+    // проверка, есть ли лучший вариант со стороны мужчины
+    short currentWomenRate = man->getRate(women);
+    for (Women *women : womens) {
+        // если какая то женщина подходит лучше и она уже замужем
+        if (man->getRate(women) < currentWomenRate) {
+            if (!single[women]) {
+                stable = false;
+                break;
+            }
+        }
+    }
+    // проверка, есть ли лучший вариант со стороны женщины
+    if (!single[women]) {
+        short currentManRate = women->getRate(man);
+        for (Man *man : mans) {
+            // если какой-то мужчина подходит лучше
+            if (women->getRate(man) < currentManRate) {
+                stable = false;
+                break;
+            }
+        }
+    }
+
+    return stable;
 }
 
 void StableMarriages::printInfo()
