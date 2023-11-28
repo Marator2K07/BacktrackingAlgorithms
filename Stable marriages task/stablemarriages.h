@@ -10,12 +10,12 @@ class StableMarriages : public QObject
 {
     Q_OBJECT
 public:
-    explicit StableMarriages(QObject *parent = nullptr);
+    explicit StableMarriages(short numberOfPairs, QObject *parent = nullptr);
 
 private:
     short numberOfPairs; // количество пар браков
     QList<Man *> mans; // список мужчин, доступных для брака
-    QList<Women *> women; // список женщин, доступных для брака
+    QList<Women *> womens; // список женщин, доступных для брака
 
 };
 
