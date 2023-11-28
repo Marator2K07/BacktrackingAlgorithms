@@ -18,6 +18,10 @@ private:
     QList<Women *> womens; // список женщин, доступных для брака
     QHash<Women *, bool> single; // словарь с информацией о замужности
 
+    ///
+    /// \brief isStable
+    /// оценка стабильности брака (есть ли партнеры лучше текущих)
+    bool isStable();
 
 public:
     ///

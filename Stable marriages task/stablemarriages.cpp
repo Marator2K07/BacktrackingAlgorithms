@@ -21,6 +21,13 @@ StableMarriages::StableMarriages(short numberOfPairs, QObject *parent)
         single.insert(women, true);
     }
 }
+
+bool StableMarriages::isStable()
+{
+    bool stable = true; // будущий результат метода
+    short index = -1;
+
+    // ..
 }
 
 void StableMarriages::printInfo()
