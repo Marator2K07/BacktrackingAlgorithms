@@ -22,6 +22,11 @@ void Women::randomlyFillRates(QList<Man *> mens)
     }
 }
 
+short Women::getRate(Man *man)
+{
+    return rateOfMans[man];
+}
+
 void Women::printRates()
 {
     QTextStream out(stdout);

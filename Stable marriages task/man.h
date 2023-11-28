@@ -28,6 +28,10 @@ public:
     /// случаное заполнение рейтингов женщин для данного обьекта мужчины,
     /// причем рейтинги оценки для каждого отдельного обьекта - всегда разные
     void randomlyFillRates(QList<Women *> womens);
+    ///
+    /// \brief getRate
+    /// получить рейтинг выбранной женщины
+    short getRate(Women *women);
     void printRates();
 
 };
