@@ -22,6 +22,11 @@ private:
     /// \brief isStable
     /// оценка стабильности брака (есть ли партнеры лучше текущих)
     bool isStable(Man *man, Women *women);
+    ///
+    /// \brief tryFindCouple
+    /// попытка найти себе пару, отталкиваться будем от мужчин,
+    /// но по сути разницы никакой нет
+    void tryFindCouple(short manIndex);
 
 public:
     ///

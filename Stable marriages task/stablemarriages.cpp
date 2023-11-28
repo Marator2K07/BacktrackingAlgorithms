@@ -52,6 +52,21 @@ bool StableMarriages::isStable(Man *man, Women *women)
     return stable;
 }
 
+void StableMarriages::tryFindCouple(short manIndex)
+{
+    // подготовка
+    Man *possibleMan = mans.value(manIndex);
+    Women *possibleWomen;
+
+    // сам алгоритм
+    if (manIndex < numberOfPairs) {
+        // выбор себе пары и всем последующим
+    } else {
+        // тут должны выводить результат возможных пар,
+        // не важно, стабильных или нет
+    }
+}
+
 void StableMarriages::printInfo()
 {
     // вывод рейтингов для мужчин
