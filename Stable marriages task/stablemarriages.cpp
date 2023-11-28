@@ -38,14 +38,12 @@ bool StableMarriages::isStable(Man *man, Women *women)
         }
     }
     // проверка, есть ли лучший вариант со стороны женщины
-    if (!single[women]) {
-        short currentManRate = women->getRate(man);
-        for (Man *man : mans) {
-            // если какой-то мужчина подходит лучше
-            if (women->getRate(man) < currentManRate) {
-                stable = false;
-                break;
-            }
+    short currentManRate = women->getRate(man);
+    for (Man *man : mans) {
+        // если какой-то мужчина подходит лучше
+        if (women->getRate(man) < currentManRate) {
+            stable = false;
+            break;
         }
     }
 
