@@ -33,6 +33,10 @@ private:
     /// попытка найти себе пару, отталкиваться будем от мужчин,
     /// но по сути разницы никакой нет
     void tryFindCouple(short manIndex);
+    ///
+    /// \brief printStatisticsOfSolution
+    /// вывод статистики о текущем решении стабильных браков
+    void printStatisticsOfSolution();
 
 public:
     ///

@@ -71,9 +71,14 @@ void StableMarriages::tryFindCouple(short manIndex)
             }
         }
     } else {
-        // тут должны выводить результат возможных пар,
-        // не важно, стабильных или нет
+        // пишем статистику по найденному решению
+        printStatisticsOfSolution();
     }
+}
+
+void StableMarriages::printStatisticsOfSolution()
+{
+
 }
 
 void StableMarriages::printInfo()
