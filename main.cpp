@@ -3,8 +3,7 @@
 #include "journeyofchessknight.h"
 #include "eightqueensproblem.h"
 
-#include "Stable marriages task/man.h"
-#include "Stable marriages task/women.h"
+#include "Stable marriages task/stablemarriages.h"
 
 int main(int argc, char *argv[])
 {
@@ -37,13 +36,9 @@ int main(int argc, char *argv[])
     qInfo() << "Solutions founded: " << solutionsCount;
     */
 
-    QList<Women *> womens;
-    womens.append(new Women);
-    womens.append(new Women);
-    womens.append(new Women);
-
-    Man manSome;
-    manSome.randomlyFillRates(womens);
+    StableMarriages stableMarriages(5);
+    stableMarriages.printInfo();
+    stableMarriages.findThem();
 
     return a.exec();
 }
