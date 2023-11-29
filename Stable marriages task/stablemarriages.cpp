@@ -78,7 +78,13 @@ void StableMarriages::tryFindCouple(short manIndex)
 
 void StableMarriages::printStatisticsOfSolution()
 {
-
+    QTextStream out(stdout);
+    short i = 0;
+    // вывод полученных текущих парочек
+    out << "Couples:\n";
+    for (auto [man, women] : couples.asKeyValueRange()) {
+        out << i++ <<")Man: " << man << "; his wife: " << women << ";\n";
+    }
 }
 
 void StableMarriages::printInfo()
