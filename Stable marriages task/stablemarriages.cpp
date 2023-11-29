@@ -83,7 +83,13 @@ void StableMarriages::printStatisticsOfSolution()
     // вывод полученных текущих парочек
     out << "Couples:\n";
     for (auto [man, women] : couples.asKeyValueRange()) {
-        out << i++ <<")Man: " << man << "; his wife: " << women << ";\n";
+        out << i++ <<")Man: " << man <<
+            QString("[with rate - %1]").
+            arg(dynamic_cast<Women *>(women)->getRate(man)) <<
+            ";\n his wife: " << women <<
+            QString("[with rate - %1]").
+            arg(dynamic_cast<Man *>(man)->getRate(women)) <<
+            ";\n";
     }
 }
 
