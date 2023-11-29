@@ -104,3 +104,13 @@ void StableMarriages::printInfo()
         women->printRates();
     }
 }
+
+void StableMarriages::findThem()
+{
+    // для последующих корректных вызовов
+    if (couples.count() > 0) {
+        couples.clear();
+    }
+    // начинаем алгоритм с первой(нулевой) пары
+    tryFindCouple(0);
+}

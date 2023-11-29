@@ -43,6 +43,10 @@ public:
     /// \brief printInfo
     /// вывод всех текущих рейтингов-оценок
     void printInfo();
+    ///
+    /// \brief findThem
+    /// метод старта поиска стабильных браков
+    void findThem();
 
 };
 
