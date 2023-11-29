@@ -16,6 +16,7 @@ class StableMarriages : public QObject
     Q_OBJECT
 public:
     explicit StableMarriages(short numberOfPairs, QObject *parent = nullptr);
+    ~StableMarriages();
 
 private:
     short numberOfPairs; // количество пар браков

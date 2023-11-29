@@ -22,6 +22,16 @@ StableMarriages::StableMarriages(short numberOfPairs, QObject *parent)
     }
 }
 
+StableMarriages::~StableMarriages()
+{
+    for (Man *man : mans) {
+        delete man;
+    }
+    for (Women *women : womens) {
+        delete women;
+    }
+}
+
 bool StableMarriages::isStable(Man *man, Women *women)
 {
     bool stable = true; // будущий результат
