@@ -68,16 +68,17 @@ void StableMarriages::tryFindCouple(short manIndex)
     // пытаемся найти пару
     if (manIndex < numberOfPairs) {
         // смотрим всех претенденток
-        for (Women *women : womens) {
+        for (int i = 0; i < numberOfPairs; ++i) {
+            Women *thisWomen = womens.value(i);
             // если женщина свободна и брак будет предположительно стабильным
-            if (single[women] && isStable(thisMan, women)) {
+            if (single[thisWomen] && isStable(thisMan, thisWomen)) {
                 // официально обьявляем парочку
-                couples.insert(thisMan, women);
-                single[women] = false;
+                couples.insert(thisMan, thisWomen);
+                single[thisWomen] = false;
                 // пытаемся найти следующую
                 tryFindCouple(manIndex + 1);
                 // отменяем ход для будущих решений
-                single[women] = true;
+                single[thisWomen] = true;
             }
         }
     } else {
