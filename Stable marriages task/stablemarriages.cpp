@@ -35,18 +35,22 @@ StableMarriages::~StableMarriages()
 bool StableMarriages::isStable(Man *man, Women *women)
 {
     bool stable = true; // будущий результат
+    short index = 0;
 
     // проверка, есть ли лучший вариант со стороны мужчины
     short currentWomenRate = man->getRate(women);
-    for (Women *women : womens) {
-        // если какая то женщина подходит лучше и она уже замужем
-        if (man->getRate(women) < currentWomenRate) {
-            if (!single[women]) {
-                stable = false;
-                break;
-            }
+    while (index < numberOfPairs) {
+        // если какая-то женщина подходит лучше, то с данной
+        // отношений не будет, иначе это был бы не стабильный брак
+        if (man->getRate(womens.value(index)) < currentWomenRate) {
+            stable = false;
+            break;
         }
+        index++;
     }
+
+    // часть алгоритма пока опустим
+    /*
     // проверка, есть ли лучший вариант со стороны женщины
     short currentManRate = women->getRate(man);
     for (Man *man : mans) {
@@ -56,6 +60,7 @@ bool StableMarriages::isStable(Man *man, Women *women)
             break;
         }
     }
+    */
 
     return stable;
 }
