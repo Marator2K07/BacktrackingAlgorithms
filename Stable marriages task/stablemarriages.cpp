@@ -42,9 +42,12 @@ bool StableMarriages::isStable(Man *man, Women *women)
     while (index < numberOfPairs) {
         // если какая-то женщина подходит лучше, то с данной
         // отношений не будет, иначе это был бы не стабильный брак
-        if (man->getRate(womens.value(index)) < currentWomenRate) {
-            stable = false;
-            break;
+        if (man->getRate(womens[index]) < currentWomenRate) {
+            // но при этом, лучше подходящая - должна быть свободна
+            if (single[womens[index]]) {
+                stable = false;
+                break;
+            }
         }
         index++;
     }
