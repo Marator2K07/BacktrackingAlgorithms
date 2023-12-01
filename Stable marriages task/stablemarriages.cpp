@@ -128,6 +128,12 @@ void StableMarriages::findThem()
     // для последующих корректных вызовов
     if (couples.count() > 0) {
         couples.clear();
+        // обновление начальных данных/приведение их к стартовому виду
+        for (int i = 0; i < numberOfPairs; ++i) {
+            mans.value(i)->randomlyFillRates(womens);
+            womens.value(i)->randomlyFillRates(mans);
+            single.insert(womens.value(i), true);
+        }
     }
     // начинаем алгоритм с первой(нулевой) пары
     tryFindCouple(0);
