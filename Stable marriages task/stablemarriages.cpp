@@ -32,13 +32,15 @@ StableMarriages::~StableMarriages()
     }
 }
 
-bool StableMarriages::isStable(Man *man, Women *women)
+bool StableMarriages::isStable(Man *man,
+                               Women *women,
+                               short pos)
 {
     bool stable = true; // будущий результат
     short index = 0;
 
-    // проверка, есть ли лучший вариант со стороны мужчины
     short currentWomenRate = man->getRate(women);
+    // проверка, есть ли лучший вариант со стороны мужчины
     while (index < numberOfPairs) {
         // если какая-то женщина подходит лучше, то с данной
         // отношений не будет, иначе это был бы не стабильный брак
@@ -79,13 +81,14 @@ void StableMarriages::tryFindCouple(short manIndex)
         for (int i = 0; i < numberOfPairs; ++i) {
             Women *thisWomen = womens.value(i);
             // если женщина свободна и брак будет предположительно стабильным
-            if (single[thisWomen] && isStable(thisMan, thisWomen)) {
+            if (single[thisWomen] && isStable(thisMan, thisWomen, i)) {
                 // официально обьявляем парочку
                 couples.insert(thisMan, thisWomen);
                 single[thisWomen] = false;
                 // пытаемся найти следующую
                 tryFindCouple(manIndex + 1);
                 // отменяем ход для будущих решений
+                couples.remove(thisMan);
                 single[thisWomen] = true;
             }
         }

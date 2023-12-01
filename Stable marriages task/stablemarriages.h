@@ -28,7 +28,9 @@ private:
     ///
     /// \brief isStable
     /// оценка стабильности брака (есть ли партнеры лучше текущих)
-    bool isStable(Man *man, Women *women);
+    bool isStable(Man *man,
+                  Women *women,
+                  short pos);
     ///
     /// \brief tryFindCouple
     /// попытка найти себе пару, отталкиваться будем от мужчин,
