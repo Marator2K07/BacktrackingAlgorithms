@@ -37,7 +37,7 @@ bool StableMarriages::isStable(Man *man,
                                short pos)
 {
     bool stable = true; // будущий результат
-    short index = 0;
+    short index = pos;
 
     short currentWomenRate = man->getRate(women);
     // проверка, есть ли лучший вариант со стороны мужчины
