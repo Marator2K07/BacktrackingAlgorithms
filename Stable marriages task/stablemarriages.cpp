@@ -36,7 +36,6 @@ bool StableMarriages::isStable(Man *man,
                                Women *women,
                                short pos)
 {
-    bool stable = true; // будущий результат
     short index = pos;
 
     // проверка, есть ли лучший вариант со стороны мужчины
@@ -47,8 +46,7 @@ bool StableMarriages::isStable(Man *man,
         if (man->getRate(womens[index]) < currentWomenRate) {
             // но при этом, лучше подходящая - должна быть свободна
             if (single[womens[index]]) {
-                stable = false;
-                break;
+                return false;
             }
         }
         index++;
@@ -60,13 +58,12 @@ bool StableMarriages::isStable(Man *man,
     while (index < numberOfPairs) {
         // если какой-то мужчина подходит лучше
         if (women->getRate(man) < currentManRate) {
-            stable = false;
-            break;
+            return false;
         }
         index++;
     }
 
-    return stable;
+    return true;
 }
 
 void StableMarriages::tryFindCouple(short manIndex)
