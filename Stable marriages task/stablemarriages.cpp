@@ -39,8 +39,8 @@ bool StableMarriages::isStable(Man *man,
     bool stable = true; // будущий результат
     short index = pos;
 
-    short currentWomenRate = man->getRate(women);
     // проверка, есть ли лучший вариант со стороны мужчины
+    short currentWomenRate = man->getRate(women);
     while (index < numberOfPairs) {
         // если какая-то женщина подходит лучше, то с данной
         // отношений не будет, иначе это был бы не стабильный брак
@@ -54,18 +54,17 @@ bool StableMarriages::isStable(Man *man,
         index++;
     }
 
-    // часть алгоритма пока опустим
-    /*
     // проверка, есть ли лучший вариант со стороны женщины
+    index = pos;
     short currentManRate = women->getRate(man);
-    for (Man *man : mans) {
+    while (index < numberOfPairs) {
         // если какой-то мужчина подходит лучше
         if (women->getRate(man) < currentManRate) {
             stable = false;
             break;
         }
+        index++;
     }
-    */
 
     return stable;
 }
