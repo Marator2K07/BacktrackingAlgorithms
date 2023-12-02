@@ -12,6 +12,12 @@ class SomeObject : public QObject
     Q_OBJECT
 public:
     explicit SomeObject(QObject *parent = nullptr);
+    SomeObject(int weight, int value);
+
+    int getWeight() const;
+    void setWeight(int newWeight);
+    int getValue() const;
+    void setValue(int newValue);
 
 private:
     int weight; // условный вес данного обьекта
