@@ -23,6 +23,11 @@ void SomeObject::setWeight(int newWeight)
     weight = newWeight;
 }
 
+void SomeObject::setRandomWeight()
+{
+    weight = QRandomGenerator::global()->bounded(0, maxWeight);
+}
+
 int SomeObject::getValue() const
 {
     return value;
@@ -31,4 +36,9 @@ int SomeObject::getValue() const
 void SomeObject::setValue(int newValue)
 {
     value = newValue;
+}
+
+void SomeObject::setRandomValue()
+{
+    value = QRandomGenerator::global()->bounded(0, maxValue);
 }

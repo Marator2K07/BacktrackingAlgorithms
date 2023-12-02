@@ -2,6 +2,7 @@
 #define SOMEOBJECT_H
 
 #include <QObject>
+#include <QRandomGenerator>
 
 ///
 /// \brief The SomeObject class
@@ -19,9 +20,14 @@ public:
     int getValue() const;
     void setValue(int newValue);
 
+    void setRandomWeight();
+    void setRandomValue();
+
 private:
     int weight; // условный вес данного обьекта
     int value; // ценность этого обьекта
+    int maxWeight = 100;
+    int maxValue = 100;
 
 };
 
