@@ -49,9 +49,15 @@ QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
     currentObjectsValue = 0;
     int *optimalValue = new int{0}; // ценность оптимального набора (решения задачи)
 
-    // тут должен быть вызываемый рекурсивный метод выбора обьекта
+    // начинаем собирать набор
+    tryJoin(0, objects);
 
     // чистка памяти и возвращение ответа
     delete optimalValue;
     return selectedOptimalObjects;
+}
+
+void OptimalChoice::tryJoin(int objectIndex, QList<SomeObject *> objects)
+{
+
 }

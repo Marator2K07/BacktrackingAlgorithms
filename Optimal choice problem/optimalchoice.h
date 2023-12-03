@@ -44,6 +44,12 @@ private:
 
     int currentObjectsWeight; // полный вес набора selectedCurrentObjects
     int currentObjectsValue; // общая ценность набора selectedCurrentObjects
+
+    ///
+    /// \brief tryJoin
+    /// попытка присоединить условный обьект из
+    /// списка к текущему набору
+    void tryJoin(int objectIndex, QList<SomeObject *> objects);
 };
 
 #endif // OPTIMALCHOICE_H
