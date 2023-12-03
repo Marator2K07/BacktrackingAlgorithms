@@ -2,12 +2,15 @@
 
 SomeObject::SomeObject(QObject *parent) :
     QObject{parent},
-    weight{0},
-    value{0}
+    weight{5},
+    value{10}
 {
 }
 
-SomeObject::SomeObject(int weight, int value) :
+SomeObject::SomeObject(int weight,
+                       int value,
+                       QObject *parent) :
+    QObject{parent},
     weight(weight),
     value(value)
 {

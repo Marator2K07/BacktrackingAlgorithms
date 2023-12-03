@@ -13,7 +13,9 @@ class SomeObject : public QObject
     Q_OBJECT
 public:
     explicit SomeObject(QObject *parent = nullptr);
-    SomeObject(int weight, int value);
+    SomeObject(int weight,
+               int value,
+               QObject *parent = nullptr);
 
     int getWeight() const;
     void setWeight(int newWeight);
