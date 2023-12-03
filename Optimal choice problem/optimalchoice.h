@@ -2,6 +2,9 @@
 #define OPTIMALCHOICE_H
 
 #include <QObject>
+#include <QSet>
+
+#include "someobject.h"
 
 ///
 /// \brief The OptimalChoice class
@@ -26,6 +29,10 @@ public:
 private:
     int limitOfWeight; // предел веса для n обьектов
     int limitOfValue; // суммарная ценность n обьектов
+
+    QSet<SomeObject *> selectedCurrentObjects; // текущее состояние собираемого набора
+    QSet<SomeObject *> selectedOptimalObjects; // оптимальный набор среди
+    // иследованных на данный момент обьектов
 };
 
 #endif // OPTIMALCHOICE_H
