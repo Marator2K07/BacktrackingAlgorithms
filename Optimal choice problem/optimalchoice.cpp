@@ -5,7 +5,8 @@ OptimalChoice::OptimalChoice(QObject *parent) :
     limitOfWeight{500},
     limitOfValue{1000},
     currentObjectsWeight{0},
-    currentObjectsValue{0}
+    currentObjectsValue{0},
+    optimalObjectsValue{0}
 {
 }
 
@@ -16,7 +17,8 @@ OptimalChoice::OptimalChoice(int limitOfWeight,
     limitOfWeight{limitOfWeight},
     limitOfValue{totalValue},
     currentObjectsWeight{0},
-    currentObjectsValue{0}
+    currentObjectsValue{0},
+    optimalObjectsValue{0}
 {
 }
 
@@ -47,13 +49,11 @@ QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
     selectedOptimalObjects.clear();
     currentObjectsWeight = 0;
     currentObjectsValue = 0;
-    int *optimalValue = new int{0}; // ценность оптимального набора (решения задачи)
+    optimalObjectsValue = 0;
 
     // начинаем собирать набор
     tryJoin(0, objects);
 
-    // чистка памяти и возвращение ответа
-    delete optimalValue;
     return selectedOptimalObjects;
 }
 

@@ -44,6 +44,7 @@ private:
 
     int currentObjectsWeight; // полный вес набора selectedCurrentObjects
     int currentObjectsValue; // общая ценность набора selectedCurrentObjects
+    int optimalObjectsValue; // общая ценность оптимального набора
 
     ///
     /// \brief tryJoin
