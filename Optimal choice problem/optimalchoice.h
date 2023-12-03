@@ -14,6 +14,9 @@ class OptimalChoice : public QObject
     Q_OBJECT
 public:
     explicit OptimalChoice(QObject *parent = nullptr);
+    OptimalChoice(int limitOfWeight,
+                  int totalValue,
+                  QObject *parent = nullptr);
 
 private:
     int limitOfWeight; // предел веса для n обьектов
