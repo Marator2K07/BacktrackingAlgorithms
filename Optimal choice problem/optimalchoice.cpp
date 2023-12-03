@@ -3,7 +3,7 @@
 OptimalChoice::OptimalChoice(QObject *parent) :
     QObject{parent},
     limitOfWeight{500},
-    totalValue{1000}
+    limitOfValue{1000}
 {
 }
 
@@ -12,7 +12,7 @@ OptimalChoice::OptimalChoice(int limitOfWeight,
                              QObject *parent) :
     QObject{parent},
     limitOfWeight{limitOfWeight},
-    totalValue{totalValue}
+    limitOfValue{totalValue}
 {
 }
 
@@ -26,12 +26,12 @@ void OptimalChoice::setLimitOfWeight(int newLimitOfWeight)
     limitOfWeight = newLimitOfWeight;
 }
 
-int OptimalChoice::getTotalValue() const
+int OptimalChoice::getLimitOfValue() const
 {
-    return totalValue;
+    return limitOfValue;
 }
 
-void OptimalChoice::setTotalValue(int newTotalValue)
+void OptimalChoice::setLimitOfValue(int newLimitOfValue)
 {
-    totalValue = newTotalValue;
+    limitOfValue = newLimitOfValue;
 }

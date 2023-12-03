@@ -20,12 +20,12 @@ public:
 
     int getLimitOfWeight() const;
     void setLimitOfWeight(int newLimitOfWeight);
-    int getTotalValue() const;
-    void setTotalValue(int newTotalValue);
+    int getLimitOfValue() const;
+    void setLimitOfValue(int newLimitOfValue);
 
 private:
     int limitOfWeight; // предел веса для n обьектов
-    int totalValue; // суммарная ценность n обьектов
+    int limitOfValue; // суммарная ценность n обьектов
 };
 
 #endif // OPTIMALCHOICE_H
