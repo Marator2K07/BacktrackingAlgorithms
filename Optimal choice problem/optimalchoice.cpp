@@ -35,3 +35,17 @@ void OptimalChoice::setLimitOfValue(int newLimitOfValue)
 {
     limitOfValue = newLimitOfValue;
 }
+
+QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
+{
+    // подготовка
+    selectedCurrentObjects.clear();
+    selectedOptimalObjects.clear();
+    int *optimalValue = new int{0}; // ценность оптимального набора (решения задачи)
+
+    // тут должен быть вызываемый рекурсивный метод выбора обьекта
+
+    // чистка памяти и возвращение ответа
+    delete optimalValue;
+    return selectedOptimalObjects;
+}

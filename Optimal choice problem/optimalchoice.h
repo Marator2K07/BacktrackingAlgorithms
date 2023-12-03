@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QSet>
+#include <QList>
 
 #include "someobject.h"
 
@@ -25,6 +26,13 @@ public:
     void setLimitOfWeight(int newLimitOfWeight);
     int getLimitOfValue() const;
     void setLimitOfValue(int newLimitOfValue);
+
+    ///
+    /// \brief selection
+    /// простое вычисление оптимального набора обьектов на выходе
+    /// для текущих заданных настроек (предельный вес и ценность)
+    /// и входящей группы обьектов
+    QSet<SomeObject *> selection(QList<SomeObject *> objects);
 
 private:
     int limitOfWeight; // предел веса для n обьектов
