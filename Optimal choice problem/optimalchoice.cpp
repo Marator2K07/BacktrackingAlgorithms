@@ -15,3 +15,23 @@ OptimalChoice::OptimalChoice(int limitOfWeight,
     totalValue{totalValue}
 {
 }
+
+int OptimalChoice::getLimitOfWeight() const
+{
+    return limitOfWeight;
+}
+
+void OptimalChoice::setLimitOfWeight(int newLimitOfWeight)
+{
+    limitOfWeight = newLimitOfWeight;
+}
+
+int OptimalChoice::getTotalValue() const
+{
+    return totalValue;
+}
+
+void OptimalChoice::setTotalValue(int newTotalValue)
+{
+    totalValue = newTotalValue;
+}

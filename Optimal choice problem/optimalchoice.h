@@ -18,6 +18,11 @@ public:
                   int totalValue,
                   QObject *parent = nullptr);
 
+    int getLimitOfWeight() const;
+    void setLimitOfWeight(int newLimitOfWeight);
+    int getTotalValue() const;
+    void setTotalValue(int newTotalValue);
+
 private:
     int limitOfWeight; // предел веса для n обьектов
     int totalValue; // суммарная ценность n обьектов
