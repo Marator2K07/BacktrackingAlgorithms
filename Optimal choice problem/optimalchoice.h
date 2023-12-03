@@ -35,12 +35,15 @@ public:
     QSet<SomeObject *> selection(QList<SomeObject *> objects);
 
 private:
-    int limitOfWeight; // предел веса для n обьектов
-    int limitOfValue; // суммарная ценность n обьектов
+    int limitOfWeight; // предел веса для обьектов
+    int limitOfValue; // предел ценности обьектов
 
     QSet<SomeObject *> selectedCurrentObjects; // текущее состояние собираемого набора
     QSet<SomeObject *> selectedOptimalObjects; // оптимальный набор среди
     // иследованных на данный момент обьектов
+
+    int currentObjectsWeight; // полный вес набора selectedCurrentObjects
+    int currentObjectsValue; // общая ценность набора selectedCurrentObjects
 };
 
 #endif // OPTIMALCHOICE_H
