@@ -59,10 +59,16 @@ int main(int argc, char *argv[])
     optimalChoice.setLimitOfWeight(550);
     // запускаем ее и смотрим результаты
     QSet<SomeObject *> resultObjects = optimalChoice.selection(objects);
+    int resultValue = 0;
+    int resultWeight = 0;
     qInfo() << "Results objects:";
     for (SomeObject * object : resultObjects) {
         object->printInfo();
+        resultValue += object->getValue();
+        resultWeight += object->getWeight();
     }
+    qInfo() << "Result objects value:" << resultValue;
+    qInfo() << "Result objects weight:" << resultWeight;
 
     return a.exec();
 }
