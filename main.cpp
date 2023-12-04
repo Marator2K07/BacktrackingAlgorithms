@@ -53,6 +53,16 @@ int main(int argc, char *argv[])
         newObject->printInfo();
         objects.append(newObject);
     }
+    // Теперь создаем и инициализируем саму задачу и ее условия
+    OptimalChoice optimalChoice;
+    optimalChoice.setLimitOfValue(750);
+    optimalChoice.setLimitOfWeight(550);
+    // запускаем ее и смотрим результаты
+    QSet<SomeObject *> resultObjects = optimalChoice.selection(objects);
+    qInfo() << "Results objects:";
+    for (SomeObject * object : resultObjects) {
+        object->printInfo();
+    }
 
     return a.exec();
 }
