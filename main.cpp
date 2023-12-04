@@ -4,6 +4,7 @@
 #include "eightqueensproblem.h"
 
 #include "Stable marriages task/stablemarriages.h"
+#include "Optimal choice problem/optimalchoice.h"
 
 int main(int argc, char *argv[])
 {
@@ -36,9 +37,22 @@ int main(int argc, char *argv[])
     qInfo() << "Solutions founded: " << solutionsCount;
     */
 
+    /*
     StableMarriages stableMarriages(5);
     stableMarriages.printInfo();
     stableMarriages.findThem();
+    */
+
+    // Создаем и инициализируем список условных обьектов
+    QList<SomeObject *> objects;
+    short countOfObjects = 22;
+    for (int i = 0; i < countOfObjects; ++i) {
+        SomeObject *newObject = new SomeObject;
+        newObject->setRandomWeight();
+        newObject->setRandomValue();
+        newObject->printInfo();
+        objects.append(newObject);
+    }
 
     return a.exec();
 }
