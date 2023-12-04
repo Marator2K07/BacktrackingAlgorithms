@@ -3,17 +3,13 @@
 OptimalChoice::OptimalChoice(QObject *parent) :
     QObject{parent},
     limitOfWeight{500},
-    limitOfValue{1000},
     optimalObjectsValue{0}
 {
 }
 
-OptimalChoice::OptimalChoice(int limitOfWeight,
-                             int totalValue,
-                             QObject *parent) :
+OptimalChoice::OptimalChoice(int limitOfWeight, QObject *parent) :
     QObject{parent},
     limitOfWeight{limitOfWeight},
-    limitOfValue{totalValue},
     optimalObjectsValue{0}
 {
 }
@@ -26,16 +22,6 @@ int OptimalChoice::getLimitOfWeight() const
 void OptimalChoice::setLimitOfWeight(int newLimitOfWeight)
 {
     limitOfWeight = newLimitOfWeight;
-}
-
-int OptimalChoice::getLimitOfValue() const
-{
-    return limitOfValue;
-}
-
-void OptimalChoice::setLimitOfValue(int newLimitOfValue)
-{
-    limitOfValue = newLimitOfValue;
 }
 
 QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
@@ -77,7 +63,7 @@ void OptimalChoice::tryJoin(int i,
         // проверка исключения обьекта из набора
         tempPotentialObjectsValue = potentialObjV -
                                     objects.value(i)->getValue();
-        if (tempPotentialObjectsValue > limitOfValue) {
+        if (tempPotentialObjectsValue > optimalObjectsValue) {
             tryJoin(i+1, currentObjW, tempPotentialObjectsValue, objects);
         }
     }
