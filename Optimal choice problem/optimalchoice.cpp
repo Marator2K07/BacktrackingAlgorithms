@@ -55,36 +55,35 @@ QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
     return selectedOptimalObjects;
 }
 
-void OptimalChoice::tryJoin(int i, QList<SomeObject *> objects)
+void OptimalChoice::tryJoin(int i,
+                            int currentObjW,
+                            int potentialObjV,
+                            QList<SomeObject *> objects)
 {
     // подготовка
     int tempCurrentObjectsWeight;
-    int tempCurrentObjectsValue;
+    int tempPotentialObjectsValue;
 
     // сам алгоритм
     if (i < objects.size()) {
         // проверка включения обьекта в набор
-        tempCurrentObjectsWeight = currentObjectsWeight +
+        tempCurrentObjectsWeight = currentObjW +
                                    objects.value(i)->getWeight();
         if (tempCurrentObjectsWeight <= limitOfWeight) {
             selectedCurrentObjects.insert(objects.value(i));
-            currentObjectsWeight += tempCurrentObjectsWeight;
-            tryJoin(i+1, objects);
+            tryJoin(i+1, tempCurrentObjectsWeight, potentialObjV, objects);
             selectedCurrentObjects.remove(objects.value(i));
-            currentObjectsWeight -= tempCurrentObjectsWeight;
         }
         // проверка исключения обьекта из набора
-        tempCurrentObjectsValue = allObjectsValue -
-                                  objects.value(i)->getValue();
-        if (tempCurrentObjectsValue > limitOfValue) {
-            allObjectsValue += tempCurrentObjectsValue;
-            tryJoin(i+1, objects);
-            allObjectsValue -= tempCurrentObjectsValue;
+        tempPotentialObjectsValue = potentialObjV -
+                                    objects.value(i)->getValue();
+        if (tempPotentialObjectsValue > limitOfValue) {
+            tryJoin(i+1, currentObjW, potentialObjV, objects);
         }
     }
     // если появился новый оптимальный набор - пишем его
-    else if(allObjectsValue > optimalObjectsValue) {
-        optimalObjectsValue = allObjectsValue;
+    else if(potentialObjV > optimalObjectsValue) {
+        optimalObjectsValue = potentialObjV;
         selectedOptimalObjects = selectedCurrentObjects;
     }
 }
