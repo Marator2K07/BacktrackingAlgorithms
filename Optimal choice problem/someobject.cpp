@@ -45,3 +45,10 @@ void SomeObject::setRandomValue()
 {
     value = QRandomGenerator::global()->bounded(0, maxValue);
 }
+
+void SomeObject::printInfo()
+{
+    QTextStream out(stdout);
+    out <<"Object: " << this << "; his weight - " <<
+        weight << "; his value - " << value << ";\n";
+}

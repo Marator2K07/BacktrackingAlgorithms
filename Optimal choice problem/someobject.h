@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QRandomGenerator>
+#include <QTextStream>
 
 ///
 /// \brief The SomeObject class
@@ -24,6 +25,8 @@ public:
 
     void setRandomWeight();
     void setRandomValue();
+
+    void printInfo();
 
 private:
     int weight; // условный вес данного обьекта
