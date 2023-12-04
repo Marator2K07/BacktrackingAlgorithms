@@ -4,8 +4,6 @@ OptimalChoice::OptimalChoice(QObject *parent) :
     QObject{parent},
     limitOfWeight{500},
     limitOfValue{1000},
-    currentObjectsWeight{0},
-    allObjectsValue{0},
     optimalObjectsValue{0}
 {
 }
@@ -16,8 +14,6 @@ OptimalChoice::OptimalChoice(int limitOfWeight,
     QObject{parent},
     limitOfWeight{limitOfWeight},
     limitOfValue{totalValue},
-    currentObjectsWeight{0},
-    allObjectsValue{0},
     optimalObjectsValue{0}
 {
 }
