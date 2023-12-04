@@ -42,16 +42,15 @@ QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
 {
     // подготовка
     selectedCurrentObjects.clear();
-    selectedOptimalObjects.clear();
-    currentObjectsWeight = 0;
-    allObjectsValue = 0;
-    for (SomeObject *object : objects) {
-        allObjectsValue += object->getValue();
-    }
+    selectedOptimalObjects.clear();    
     optimalObjectsValue = 0;
+    int totalValue = 0;
+    for (SomeObject *object : objects) {
+        totalValue += object->getValue();
+    }
 
     // начинаем собирать набор
-    tryJoin(0, objects);
+    tryJoin(0, 0, totalValue, objects);
 
     return selectedOptimalObjects;
 }
