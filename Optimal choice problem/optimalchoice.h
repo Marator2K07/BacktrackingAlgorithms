@@ -37,13 +37,11 @@ public:
 private:
     int limitOfWeight; // предел веса для обьектов
     int limitOfValue; // предел ценности обьектов
-
     QSet<SomeObject *> selectedCurrentObjects; // текущее состояние собираемого набора
     QSet<SomeObject *> selectedOptimalObjects; // оптимальный набор среди
     // иследованных на данный момент обьектов
-
     int currentObjectsWeight; // полный вес набора selectedCurrentObjects
-    int currentObjectsValue; // общая ценность набора selectedCurrentObjects
+    int allObjectsValue; // общая ценность всех обьектов, переданных в параметре
     int optimalObjectsValue; // общая ценность оптимального набора
 
     ///

@@ -5,7 +5,7 @@ OptimalChoice::OptimalChoice(QObject *parent) :
     limitOfWeight{500},
     limitOfValue{1000},
     currentObjectsWeight{0},
-    currentObjectsValue{0},
+    allObjectsValue{0},
     optimalObjectsValue{0}
 {
 }
@@ -17,7 +17,7 @@ OptimalChoice::OptimalChoice(int limitOfWeight,
     limitOfWeight{limitOfWeight},
     limitOfValue{totalValue},
     currentObjectsWeight{0},
-    currentObjectsValue{0},
+    allObjectsValue{0},
     optimalObjectsValue{0}
 {
 }
@@ -48,7 +48,10 @@ QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
     selectedCurrentObjects.clear();
     selectedOptimalObjects.clear();
     currentObjectsWeight = 0;
-    currentObjectsValue = 0;
+    allObjectsValue = 0;
+    for (SomeObject *object : objects) {
+        allObjectsValue += object->getValue();
+    }
     optimalObjectsValue = 0;
 
     // начинаем собирать набор
@@ -76,17 +79,17 @@ void OptimalChoice::tryJoin(int i, QList<SomeObject *> objects)
             currentObjectsWeight -= tempCurrentObjectsWeight;
         }
         // проверка исключения обьекта из набора
-        tempCurrentObjectsValue = currentObjectsValue -
+        tempCurrentObjectsValue = allObjectsValue -
                                   objects.value(i)->getValue();
         if (tempCurrentObjectsValue > limitOfValue) {
-            currentObjectsValue += tempCurrentObjectsValue;
+            allObjectsValue += tempCurrentObjectsValue;
             tryJoin(i+1, objects);
-            currentObjectsValue -= tempCurrentObjectsValue;
+            allObjectsValue -= tempCurrentObjectsValue;
         }
     }
     // если появился новый оптимальный набор - пишем его
-    else if(currentObjectsValue > optimalObjectsValue) {
-        optimalObjectsValue = currentObjectsValue;
+    else if(allObjectsValue > optimalObjectsValue) {
+        optimalObjectsValue = allObjectsValue;
         selectedOptimalObjects = selectedCurrentObjects;
     }
 }
