@@ -78,7 +78,7 @@ void OptimalChoice::tryJoin(int i,
         tempPotentialObjectsValue = potentialObjV -
                                     objects.value(i)->getValue();
         if (tempPotentialObjectsValue > limitOfValue) {
-            tryJoin(i+1, currentObjW, potentialObjV, objects);
+            tryJoin(i+1, currentObjW, tempPotentialObjectsValue, objects);
         }
     }
     // если появился новый оптимальный набор - пишем его
