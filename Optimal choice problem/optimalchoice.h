@@ -50,7 +50,7 @@ private:
     /// \brief tryJoin
     /// попытка присоединить условный обьект из
     /// списка к текущему набору
-    void tryJoin(int objectIndex, QList<SomeObject *> objects);
+    void tryJoin(int i, QList<SomeObject *> objects);
 };
 
 #endif // OPTIMALCHOICE_H

@@ -57,7 +57,36 @@ QSet<SomeObject *> OptimalChoice::selection(QList<SomeObject *> objects)
     return selectedOptimalObjects;
 }
 
-void OptimalChoice::tryJoin(int objectIndex, QList<SomeObject *> objects)
+void OptimalChoice::tryJoin(int i, QList<SomeObject *> objects)
 {
+    // подготовка
+    int tempCurrentObjectsWeight;
+    int tempCurrentObjectsValue;
 
+    // сам алгоритм
+    if (i < objects.size()) {
+        // проверка включения обьекта в набор
+        tempCurrentObjectsWeight = currentObjectsWeight +
+                                   objects.value(i)->getWeight();
+        if (tempCurrentObjectsWeight <= limitOfWeight) {
+            selectedCurrentObjects.insert(objects.value(i));
+            currentObjectsWeight += tempCurrentObjectsWeight;
+            tryJoin(i+1, objects);
+            selectedCurrentObjects.remove(objects.value(i));
+            currentObjectsWeight -= tempCurrentObjectsWeight;
+        }
+        // проверка исключения обьекта из набора
+        tempCurrentObjectsValue = currentObjectsValue -
+                                  objects.value(i)->getValue();
+        if (tempCurrentObjectsValue > limitOfValue) {
+            currentObjectsValue += tempCurrentObjectsValue;
+            tryJoin(i+1, objects);
+            currentObjectsValue -= tempCurrentObjectsValue;
+        }
+    }
+    // если появился новый оптимальный набор - пишем его
+    else if(currentObjectsValue > optimalObjectsValue) {
+        optimalObjectsValue = currentObjectsValue;
+        selectedOptimalObjects = selectedCurrentObjects;
+    }
 }
