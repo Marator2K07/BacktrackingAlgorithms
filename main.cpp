@@ -55,7 +55,6 @@ int main(int argc, char *argv[])
     }
     // Теперь создаем и инициализируем саму задачу и ее условия
     OptimalChoice optimalChoice;
-    optimalChoice.setLimitOfValue(750);
     optimalChoice.setLimitOfWeight(550);
     // запускаем ее и смотрим результаты
     QSet<SomeObject *> resultObjects = optimalChoice.selection(objects);
